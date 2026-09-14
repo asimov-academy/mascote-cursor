@@ -105,7 +105,7 @@ de argila e personalidades próprias.
 | **Grão**   | Grão de café       | Companheiro oficial do só mais um ajuste. | `grao`         |
 
 Cada personagem já vem com **nove direções da cabeça e três expressões**, reunidas
-em um único PNG. O componente mostra a pose certa conforme a posição do mouse.
+em um único PNG de alta resolução. O componente mostra a pose certa conforme a posição do mouse.
 
 ## Quero ver funcionando
 

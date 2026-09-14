@@ -3,197 +3,139 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f8f6ef" />
     <meta
       name="description"
-      content="Dez mascotes autorais que acompanham o mouse e reagem ao seu carinho. Escolha um, peça ao seu agente e dê personalidade ao seu site."
+      content="Dez mascotes autorais que acompanham o mouse. Uma skill em português para colocar um deles no seu site."
     />
-    <title>Mascote Cursor — um pequeno toque de personalidade</title>
+    <title>Mascote Cursor — por Asimov</title>
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./demo/estilo.css" />
     <script type="module" src="./demo/app.js"></script>
   </head>
   <body>
-    <header class="cabecalho">
-      <a class="marca" href="./" aria-label="Mascote Cursor, início"
-        ><span class="simbolo" aria-hidden="true">m<span>c</span></span> mascote
-        cursor<span class="selo">por Asimov</span></a
-      >
-      <nav aria-label="Navegação principal">
-        <a href="#turma">A turma</a><a href="#comecar">Como usar</a
-        ><a
-          class="github"
-          href="https://github.com/asimov-academy/mascote-cursor"
-          >GitHub <span aria-hidden="true">↗</span></a
-        >
-      </nav>
-    </header>
     <main>
-      <section class="hero" aria-labelledby="titulo">
-        <div class="introducao">
-          <p class="sobretitulo">
-            <span class="ponto"></span> PEQUENOS PERSONAGENS. GRANDES CONEXÕES.
-          </p>
-          <h1 id="titulo">Seu site ganhou<br />uma <em>companhia.</em></h1>
-          <p class="resumo">
-            Ele acompanha o seu mouse.<br />Reage ao seu carinho. E deixa tudo
-            mais seu.
-          </p>
-          <div class="acoes">
-            <a class="botao primario" href="#turma"
-              >Encontre seu mascote <span aria-hidden="true">↗</span></a
-            ><a class="link-simples" href="#comecar"
-              >Quero no meu site <span aria-hidden="true">↓</span></a
-            >
-          </div>
-          <p class="nota">
-            10 mascotes autorais <span>·</span> Código aberto <span>·</span> Em
-            português
-          </p>
-        </div>
-        <div class="palco" id="palco">
-          <span class="orbita" aria-hidden="true"></span
-          ><span class="estrelinha estrela-um" aria-hidden="true">✳</span
-          ><span class="estrelinha estrela-dois" aria-hidden="true">✧</span>
-          <div class="balao" id="balao">Oi! Eu sou a Capi.</div>
-          <mascote-cursor
-            id="principal"
-            mascote="capi"
-            tamanho="350"
-          ></mascote-cursor>
-          <div class="etiqueta">
-            <span class="ponto"></span>
-            <span id="descricao-palco">Capivara, tranquila por natureza.</span>
-          </div>
-          <span class="dica-mao"
-            >psiu… mexe o mouse! <span aria-hidden="true">↖</span></span
+      <section class="introducao" aria-labelledby="titulo">
+        <mascote-cursor
+          id="principal"
+          mascote="capi"
+          tamanho="168"
+        ></mascote-cursor>
+        <h1 id="titulo">/mascote-cursor</h1>
+        <p class="resumo">
+          Uma pequena companhia para o seu site. <br />Ela acompanha o mouse com
+          a cabeça e sorri quando recebe carinho.
+        </p>
+        <div class="acoes">
+          <a class="botao primario" href="#turma">Escolher um dos 10</a>
+          <a class="botao" href="#criar">Criar o meu</a>
+          <a
+            class="botao"
+            href="https://github.com/asimov-academy/mascote-cursor"
+            >GitHub ↗</a
           >
-          <button class="controle-movimento" id="pausar" aria-pressed="false">
-            Pausar movimento
-          </button>
         </div>
+        <p class="nota">
+          Uma skill em português. Artes próprias. Código aberto.
+        </p>
       </section>
-      <div class="faixa">
-        <p>Um detalhe que faz alguém <strong>sorrir.</strong></p>
-        <div>
-          <span>Sem dependências no site</span
-          ><span>Pronto para seu agente</span><span>Seu para personalizar</span>
-        </div>
-      </div>
-      <section class="colecao" id="turma" aria-labelledby="titulo-turma">
+      <section id="turma" class="colecao" aria-labelledby="titulo-turma">
         <div class="titulo-secao">
           <div>
-            <p class="sobretitulo">ESCOLHA SUA COMPANHIA</p>
-            <h2 id="titulo-turma">Uma turma de personalidade.</h2>
+            <h2 id="titulo-turma">Dez prontos para conhecer.</h2>
+            <p>
+              Mova o mouse e faça carinho. Escolha um nome para levar ao seu
+              site.
+            </p>
           </div>
-          <p>
-            Clique em um nome para conhecer melhor.<br />Faça carinho no
-            personagem para ver a reação.
-          </p>
+          <button id="pausar" class="texto-botao" aria-pressed="false">
+            Pausar movimento
+          </button>
         </div>
         <div class="grade" id="grade"></div>
         <div class="escolha" aria-live="polite">
           <p>
-            <strong id="nome-escolhido">Capi</strong>
-            <span id="frase-escolhida">Calma de quem já salvou o arquivo.</span>
+            <strong id="nome-escolhido">Capi</strong
+            ><span id="frase-escolhida"
+              >Calma de quem já salvou o arquivo.</span
+            >
           </p>
-          <button class="botao pequeno" id="copiar-personagem">
-            Copiar pedido para o agente <span aria-hidden="true">↗</span>
+          <button id="copiar-personagem" class="botao">
+            Copiar pedido para o agente
           </button>
         </div>
       </section>
-      <section class="comecar" id="comecar" aria-labelledby="titulo-comecar">
-        <div>
-          <p class="sobretitulo">DAQUI PARA O SEU SITE</p>
-          <h2 id="titulo-comecar">
-            Você escolhe. <br />Seu agente cuida <br />do resto.
-          </h2>
-          <p class="texto-apoio">
-            Uma skill é um pequeno manual que ensina seu assistente de
-            programação a fazer uma tarefa. Esta já vem com a turma inteira na
-            mala.
-          </p>
+      <section id="comecar" aria-labelledby="titulo-comecar">
+        <h2 id="titulo-comecar">Escolheu? Seu agente instala.</h2>
+        <p>
+          Uma skill ensina seu assistente a fazer uma tarefa. Esta já vem com os
+          dez mascotes.
+        </p>
+        <ol class="passos">
+          <li>
+            <h3>Instale a skill no terminal do seu projeto.</h3>
+            <div class="codigo">
+              <code id="comando"
+                >npx skills add asimov-academy/mascote-cursor --skill
+                mascote-cursor</code
+              ><button
+                class="texto-botao"
+                data-copiar="comando"
+                aria-label="Copiar comando de instalação"
+              >
+                Copiar
+              </button>
+            </div>
+          </li>
+          <li>
+            <h3>Peça no chat do assistente.</h3>
+            <div class="codigo">
+              <p id="pedido">
+                Use a skill mascote-cursor para colocar a Capi ao lado do título
+                do meu site. Integre os arquivos e confira o resultado no
+                navegador.
+              </p>
+              <button
+                class="texto-botao"
+                data-copiar="pedido"
+                aria-label="Copiar pedido"
+              >
+                Copiar
+              </button>
+            </div>
+          </li>
+        </ol>
+        <p class="nota">
+          Sem gerar imagens ou configurar API para usar os prontos.
           <a
-            class="link-simples"
             href="https://github.com/asimov-academy/mascote-cursor#comece-por-aqui"
-            >Abrir o guia completo <span aria-hidden="true">↗</span></a
+            >Guia passo a passo ↗</a
+          >
+        </p>
+      </section>
+      <section id="criar" aria-labelledby="titulo-criar">
+        <h2 id="titulo-criar">Uma companhia só sua.</h2>
+        <p>
+          Descreva um personagem ao agente. A skill orienta a criação das poses,
+          prepara o arquivo e integra tudo na sua página.
+        </p>
+        <div class="acoes">
+          <a
+            class="botao"
+            href="https://github.com/asimov-academy/mascote-cursor/blob/main/skills/mascote-cursor/references/criar.md"
+            >Como criar um mascote ↗</a
+          ><a class="link" href="./demo/personalizar.html"
+            >Abrir revisor de poses</a
           >
         </div>
-        <div class="passos">
-          <article>
-            <span class="numero">01</span>
-            <div>
-              <h3>Ensine seu agente</h3>
-              <p>
-                Abra o terminal do seu projeto e instale a skill. Escolha o
-                assistente que você usa.
-              </p>
-              <div class="codigo">
-                <code id="comando"
-                  >npx skills add asimov-academy/mascote-cursor --skill
-                  mascote-cursor</code
-                ><button
-                  class="copiar"
-                  data-copiar="comando"
-                  aria-label="Copiar comando de instalação"
-                >
-                  Copiar
-                </button>
-              </div>
-            </div>
-          </article>
-          <article>
-            <span class="numero">02</span>
-            <div>
-              <h3>Peça do seu jeito</h3>
-              <p>No chat do assistente, diga onde ele deve aparecer.</p>
-              <div class="pedido">
-                <p id="pedido">
-                  Use a skill mascote-cursor para colocar a Capi ao lado do
-                  título do meu site.
-                </p>
-                <button
-                  class="copiar"
-                  data-copiar="pedido"
-                  aria-label="Copiar pedido"
-                >
-                  Copiar
-                </button>
-              </div>
-            </div>
-          </article>
-          <article>
-            <span class="numero">03</span>
-            <div>
-              <h3>Pronto. Agora é dar um oi.</h3>
-              <p>
-                O agente integra os arquivos e confere o resultado. Sem chave de
-                API para usar os mascotes prontos.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>
-      <section class="finalzinho">
-        <span aria-hidden="true">✳</span>
-        <h2>Pequeno no tamanho.<br />Enorme no carisma.</h2>
-        <p>
-          Feito para quem acredita que a internet<br />também pode ser um lugar
-          mais divertido.
-        </p>
-        <a
-          class="botao primario"
-          href="https://github.com/asimov-academy/mascote-cursor"
-          >Leve essa ideia com você <span aria-hidden="true">↗</span></a
-        >
       </section>
     </main>
     <footer>
-      <a class="marca" href="./">mascote cursor</a>
-      <p>Uma criação da Asimov Academy. Feito para compartilhar.</p>
-      <a
+      <span
+        >Uma criação da
+        <a href="https://github.com/asimov-academy">Asimov Academy</a>.</span
+      ><a
         href="https://github.com/asimov-academy/mascote-cursor/blob/main/LICENSE"
-        >Licença MIT ↗</a
+        >Licença MIT</a
       >
     </footer>
     <p id="aviso" role="status" class="aviso" hidden></p>

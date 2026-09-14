@@ -22,7 +22,7 @@ e três expressões. O tigre da referência não foi usado como entrada de gera�
 
 As folhas-fonte estão em `arte/fontes/`. O preparador próprio remove o fundo magenta,
 recorta as células, normaliza a escala e alinha a base dos ombros. A saída é um PNG
-transparente de 768 × 1024 por personagem. Broto teve as colunas direcionais invertidas
+transparente de 1536 × 2048 por personagem. Broto teve as colunas direcionais invertidas
 para corresponder aos lados do observador. As poses foram conferidas visualmente.
 Código, arte e documentação são distribuídos com a licença do projeto.
 

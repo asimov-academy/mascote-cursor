@@ -48,7 +48,7 @@ node "<pasta-da-skill>/scripts/preparar.mjs" \
 
 O preparador remove a cor de fundo conectada às bordas, encontra o espaço entre poses,
 alinha a base dos ombros e aplica uma escala única. Exporta um atlas transparente de
-768 × 1024, com 12 quadros de 256 × 256. Não usa serviços externos nem pacotes adicionais.
+1536 × 2048, com 12 quadros de 512 × 512. Não usa serviços externos nem pacotes adicionais.
 Recusa poses sobrepostas, arquivo vazio e saída já existente. `--substituir` permite
 atualizar uma saída deliberadamente; a entrada é preservada. `--inverter-lados` troca
 as colunas esquerda/direita das nove direções, sem espelhar o personagem, se o gerador
@@ -86,7 +86,8 @@ ou use:
 
 Carregue `mascote.js` uma vez. Confira na página final com mouse, toque, teclado e
 movimento reduzido. No celular, o toque aciona a expressão; não existe acompanhamento
-contínuo do dedo. Use tamanho de até 256 pixels para manter a nitidez nativa.
+contínuo do dedo. Prefira tamanho de 160 a 168 pixels para nitidez em telas de alta densidade.
+As células têm 512 pixels; a preparação preserva o detalhe da fonte e não amplia a arte artificialmente. Uma fonte pequena continua limitada pela sua resolução.
 
 ## Migração da versão 1
 

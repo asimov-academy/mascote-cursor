@@ -41,6 +41,11 @@ test("as dez artes carregam e têm transparência de verdade", async ({
     }),
   );
   expect(alphas.every((a) => a.vazios > 10000 && a.opacos > 10000)).toBe(true);
+  const nitidez = await page.locator("#principal").evaluate((m) => ({
+    disponiveis: m.foto.naturalWidth / 3,
+    necessarios: m.getBoundingClientRect().width * devicePixelRatio,
+  }));
+  expect(nitidez.disponiveis).toBeGreaterThanOrEqual(nitidez.necessarios);
   expect(erros).toEqual([]);
 });
 
@@ -201,7 +206,7 @@ test("revisor aceita atlas local e permite conferir todas as poses", async ({
   await page
     .locator("#arquivo")
     .setInputFiles(resolve("skills/mascote-cursor/assets/mascotes/capi.png"));
-  await expect(page.locator("#status")).toContainText("768 × 1024");
+  await expect(page.locator("#status")).toContainText("1536 × 2048");
   const m = page.locator("#previa");
   await expect(m).toHaveAttribute("atlas", /^blob:/);
   for (let i = 0; i < 12; i++) {

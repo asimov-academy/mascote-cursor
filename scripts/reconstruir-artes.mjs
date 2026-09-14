@@ -15,7 +15,7 @@ for (const item of manifesto) {
   );
   const { imagem } = preparar(
     aplicarChroma(fonte, item.fundo),
-    256,
+    512,
     item.inverterLados,
   );
   await writeFile(

@@ -5,16 +5,14 @@ const grade = document.querySelector("#grade");
 let escolhido = mascotes[0];
 let pausa = false;
 let avisoTimer;
-for (const [indice, item] of mascotes.entries()) {
+for (const item of mascotes) {
   const cartao = document.createElement("article");
   cartao.className = "cartao";
   cartao.dataset.id = item.id;
   cartao.dataset.escolhido = String(item.id === escolhido.id);
-  cartao.style.setProperty("--cor", item.cor);
   // Todos os valores deste template vêm do catálogo local versionado.
-  cartao.innerHTML = `<span class="indice">${String(indice + 1).padStart(2, "0")}</span><span class="selecionado" aria-hidden="true">✓</span>
-    <div class="imagem-cartao"><mascote-cursor mascote="${item.id}"></mascote-cursor></div>
-    <button class="selecionar" aria-pressed="${item.id === escolhido.id}" aria-label="Escolher ${item.nome}"><strong>${item.nome}</strong><small>${item.especie}</small></button>`;
+  cartao.innerHTML = `<div class="imagem-cartao"><mascote-cursor mascote="${item.id}"></mascote-cursor></div>
+    <button class="selecionar" aria-pressed="${item.id === escolhido.id}" aria-label="Escolher ${item.nome}"><strong>${item.nome}</strong></button>`;
   cartao
     .querySelector(".selecionar")
     .addEventListener("click", () => escolher(item));
@@ -31,9 +29,6 @@ function escolher(item) {
       .setAttribute("aria-pressed", String(selecionado));
   }
   document.querySelector("#principal").setAttribute("mascote", item.id);
-  document.querySelector("#balao").textContent =
-    `Oi! Pode me chamar de ${item.nome}.`;
-  document.querySelector("#descricao-palco").textContent = item.personalidade;
   document.querySelector("#nome-escolhido").textContent = item.nome;
   document.querySelector("#frase-escolhida").textContent = item.personalidade;
   document.querySelector("#pedido").textContent = pedido();

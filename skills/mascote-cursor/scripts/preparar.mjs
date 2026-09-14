@@ -6,7 +6,7 @@ import { parseArgs } from "node:util";
 import { lerPNG, escreverPNG, aplicarChroma } from "./png.mjs";
 
 /** Recorta doze quadros e registra todos pela base dos ombros, com uma escala única. */
-export function preparar(imagem, tamanho = 256, inverterLados = false) {
+export function preparar(imagem, tamanho = 512, inverterLados = false) {
   const { largura, altura, pixels } = imagem;
   const celula = largura / 3;
   if (Math.abs(celula - altura / 4) > 2)
@@ -114,6 +114,7 @@ export function preparar(imagem, tamanho = 256, inverterLados = false) {
     ),
   );
   const escala = Math.min(
+    1,
     (tamanho * 0.82) / alturaMaxima,
     (tamanho * 0.86) / larguraMaxima,
   );
@@ -125,8 +126,11 @@ export function preparar(imagem, tamanho = 256, inverterLados = false) {
   for (const q of quadros) {
     for (let y = 0; y < tamanho; y++)
       for (let x = 0; x < tamanho; x++) {
-        const sx = (x - tamanho / 2) / escala + q.ancora;
-        const sy = (y - tamanho * 0.91) / escala + q.base;
+        const origemX = (x - tamanho / 2) / escala + q.ancora;
+        const origemY = (y - tamanho * 0.91) / escala + q.base;
+        // Em escala nativa, preserve os pixels sem suavização por deslocamento fracionário.
+        const sx = escala === 1 ? Math.round(origemX) : origemX;
+        const sy = escala === 1 ? Math.round(origemY) : origemY;
         const ix = Math.floor(sx),
           iy = Math.floor(sy);
         const fx = sx - ix,
@@ -194,7 +198,7 @@ if (
     if (values.fundo) fonte = aplicarChroma(fonte, values.fundo);
     const { imagem, relatorio } = preparar(
       fonte,
-      256,
+      512,
       values["inverter-lados"],
     );
     await mkdir(dirname(resolve(values.saida)), { recursive: true });

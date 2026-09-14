@@ -145,7 +145,7 @@ pre {
     font-size: 50px;
   }
   #previa {
-    --mascote-tamanho: 330px !important;
+    --mascote-tamanho: 256px !important;
   }
 }
 
