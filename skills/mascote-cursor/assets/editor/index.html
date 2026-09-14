@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Seu próprio mascote — editor de olhos</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./editor.css" />
+    <script type="module" src="./editor.js"></script>
+  </head>
+  <body>
+    <header>
+      <span>MASCOTE CURSOR / ATELIÊ</span>
+      <h1>Agora ele tem<br />o seu olhar.</h1>
+      <p>
+        Carregue uma arte sem olhos, ajuste o rosto e copie a configuração.<br />Sua
+        imagem fica neste navegador. Nada é enviado a um servidor.
+      </p>
+    </header>
+    <main>
+      <section class="visual" aria-label="Prévia do mascote">
+        <div id="fundo">
+          <mascote-cursor id="previa" tamanho="380" pausado></mascote-cursor>
+        </div>
+        <div class="acoes">
+          <button id="tema" type="button">Ver em fundo escuro</button
+          ><button id="movimento" type="button" aria-pressed="false">
+            Testar movimento
+          </button>
+        </div>
+        <p>Mova o mouse e clique para fazer carinho.</p>
+      </section>
+      <section class="controles" aria-label="Configuração dos olhos">
+        <label class="arquivo"
+          >1. Escolha sua imagem
+          <input id="arquivo" type="file" accept="image/png,image/webp"
+        /></label>
+        <p id="status" role="status">
+          Comece com a Capi de exemplo ou abra um PNG/WebP quadrado com
+          transparência.
+        </p>
+        <h2>2. Encontre o lugar dos olhos</h2>
+        <p>Os valores são porcentagens da imagem inteira.</p>
+        <div id="campos"></div>
+        <button type="button" id="restaurar">
+          Restaurar coordenadas do exemplo
+        </button>
+        <h2>3. Leve para o seu site</h2>
+        <label
+          >Caminho público da sua imagem<input
+            id="caminho"
+            value="/mascote-cursor/mascotes/meu-personagem.png"
+            spellcheck="false"
+        /></label>
+        <label
+          >Nome acessível<input
+            id="rotulo"
+            value="Fazer carinho no meu mascote"
+        /></label>
+        <pre><code id="resultado"></code></pre>
+        <button class="principal" type="button" id="copiar">
+          Copiar configuração
+        </button>
+        <p>
+          O botão copia o HTML. Salve sua imagem no projeto e carregue o módulo
+          <code>mascote.js</code> para ativá-lo.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

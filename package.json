@@ -1,0 +1,21 @@
+{
+  "name": "mascote-cursor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dez pequenos personagens. Um site com mais personalidade. Feito em português.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/servir.mjs",
+    "test": "node --test testes/*.test.mjs",
+    "test:browser": "playwright test",
+    "verificar": "npm test && npm run test:browser",
+    "catalogo": "node skills/mascote-cursor/scripts/instalar.mjs --listar"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}

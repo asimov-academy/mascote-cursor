@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mascote Cursor"
+  short_description: "Coloque um mascote cheio de vida no seu site"
+  default_prompt: "Use $mascote-cursor para colocar a Capi ao lado do título do meu site e verificar a integração."
