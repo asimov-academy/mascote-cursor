@@ -1,7 +1,7 @@
 # Como contribuir
 
 Abra uma issue com o problema, a tecnologia do site e os passos para reproduzir.
-Uma captura da página montada ajuda mais que o PNG sem olhos. Para bugs de movimento,
+Uma captura da página montada ajuda mais que o atlas isolado. Para bugs de movimento,
 informe navegador, mouse ou toque e se movimento reduzido está ativado.
 
 ## Desenvolver
@@ -22,7 +22,7 @@ Não crie outra cópia do componente para a demo. O instalador precisa continuar
 funcionando quando a pasta da skill for copiada para fora deste repositório.
 
 Mantenha exatamente dez personagens no catálogo. Para personagens personalizados,
-melhore a rota `imagem` + `olhos` e o editor. Novas artes da coleção precisam de origem
+melhore a rota `atlas` e o editor. Novas artes da coleção precisam de origem
 documentada, fundo transparente e verificação visual nos dois temas do editor.
 
 ## Antes de enviar

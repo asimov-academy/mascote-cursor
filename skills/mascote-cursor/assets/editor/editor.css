@@ -148,3 +148,13 @@ pre {
     --mascote-tamanho: 330px !important;
   }
 }
+
+#campos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+#campos button[aria-pressed="true"] {
+  background: #365b43;
+  color: white;
+}

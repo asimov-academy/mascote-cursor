@@ -19,9 +19,11 @@ Feitos para você escolher — e para seu agente instalar.
 
 Sabe quando uma página tem um detalhe que faz você sorrir? É essa a ideia.
 
-O **Mascote Cursor** coloca um personagem no seu site. Os olhos seguem o mouse com
-suavidade e, quando você clica, ele fecha os olhinhos e recebe um coração. No celular,
+O **Mascote Cursor** coloca um personagem no seu site. A cabeça vira para acompanhar o mouse
+em nove direções e, quando você clica, ele sorri e recebe um coração. No celular,
 é só tocar. Também dá para interagir pelo teclado.
+
+![Capi virando a cabeça conforme o ponteiro muda de direção](docs/movimento.gif)
 
 Ele fica no lugar que você escolher: ao lado do título, numa apresentação, no rodapé.
 O nome é sobre o **cursor do mouse**: não é exclusivo do editor Cursor e não substitui
@@ -32,7 +34,7 @@ a setinha do sistema.
 **Você já tem um projeto aberto em um assistente de programação, como Cursor,
 Claude Code ou Codex? Este é o caminho mais fácil.**
 
-Uma *skill* é um pequeno manual que ensina seu assistente a fazer uma tarefa. Esta
+Uma _skill_ é um pequeno manual que ensina seu assistente a fazer uma tarefa. Esta
 já inclui os personagens, o código e as instruções para integrar tudo no seu site.
 
 ### 1. Instale a skill
@@ -89,21 +91,21 @@ O agente faz a mudança no projeto. O mascote continua sendo seu para editar.
 São **exatamente dez** personagens prontos, com direção visual de pequenas miniaturas
 de argila e personalidades próprias.
 
-| Mascote | Quem é | Seu jeito | Nome no código |
-| --- | --- | --- | --- |
-| **Capi** | Capivara | Calma de quem já salvou o arquivo. | `capi` |
-| **Pingo** | Gotinha | Uma boa ideia sempre puxa outra. | `pingo` |
-| **Broto** | Plantinha | Pequenos começos, grandes possibilidades. | `broto` |
-| **Faísca** | Chaminha | A energia de tirar uma ideia do papel. | `faisca` |
-| **Lume** | Mariposinha | Curiosidade acesa até de madrugada. | `lume` |
-| **Caju** | Cajuzinho | Um jeitinho brasileiro de ser diferente. | `caju` |
-| **Bento** | Vira-lata caramelo | Seu próximo projeto ganhou companhia. | `bento` |
-| **Nimbo** | Nuvem | Cabeça nas nuvens. Ideias também. | `nimbo` |
-| **Tico** | Robozinho | Um pouco de lógica, um tanto de afeto. | `tico` |
-| **Grão** | Grão de café | Companheiro oficial do só mais um ajuste. | `grao` |
+| Mascote    | Quem é             | Seu jeito                                 | Nome no código |
+| ---------- | ------------------ | ----------------------------------------- | -------------- |
+| **Capi**   | Capivara           | Calma de quem já salvou o arquivo.        | `capi`         |
+| **Pingo**  | Gotinha            | Uma boa ideia sempre puxa outra.          | `pingo`        |
+| **Broto**  | Plantinha          | Pequenos começos, grandes possibilidades. | `broto`        |
+| **Faísca** | Chaminha           | A energia de tirar uma ideia do papel.    | `faisca`       |
+| **Lume**   | Mariposinha        | Curiosidade acesa até de madrugada.       | `lume`         |
+| **Caju**   | Cajuzinho          | Um jeitinho brasileiro de ser diferente.  | `caju`         |
+| **Bento**  | Vira-lata caramelo | Seu próximo projeto ganhou companhia.     | `bento`        |
+| **Nimbo**  | Nuvem              | Cabeça nas nuvens. Ideias também.         | `nimbo`        |
+| **Tico**   | Robozinho          | Um pouco de lógica, um tanto de afeto.    | `tico`         |
+| **Grão**   | Grão de café       | Companheiro oficial do só mais um ajuste. | `grao`         |
 
-Os olhos são adicionados pelo componente. **Os arquivos de imagem sozinhos aparecem
-sem olhos de propósito.** A prévia acima e a demonstração mostram o resultado montado.
+Cada personagem já vem com **nove direções da cabeça e três expressões**, reunidas
+em um único PNG. O componente mostra a pose certa conforme a posição do mouse.
 
 ## Quero ver funcionando
 
@@ -164,18 +166,18 @@ O componente usa recursos nativos do navegador. Há orientações para **HTML, R
 Next.js, Vue, Svelte e Astro** no [guia de integração](skills/mascote-cursor/references/integracao.md).
 Isso não exige migrar seu site para outra tecnologia.
 
-| Quero mudar… | Como fazer |
-| --- | --- |
-| Personagem | Instale a nova arte e troque `mascote="bento"`. |
-| Tamanho | Use `tamanho="120"`. |
-| Nome acessível | Use `rotulo="Fazer carinho em Bento"`. |
-| Movimento | Adicione `pausado`; remova o atributo para retomar. |
-| Posição | Coloque a tag no layout desejado. Ela não flutua sobre a página. |
-| Arte própria | Use `imagem` e `olhos`, como no guia abaixo. |
+| Quero mudar…   | Como fazer                                                       |
+| -------------- | ---------------------------------------------------------------- |
+| Personagem     | Instale a nova arte e troque `mascote="bento"`.                  |
+| Tamanho        | Use `tamanho="120"`.                                             |
+| Nome acessível | Use `rotulo="Fazer carinho em Bento"`.                           |
+| Movimento      | Adicione `pausado`; remova o atributo para retomar.              |
+| Posição        | Coloque a tag no layout desejado. Ela não flutua sobre a página. |
+| Arte própria   | Use `atlas`, como no guia abaixo.                                |
 
 ## E se eu quiser um mascote só meu?
 
-O processo é curto: **gere uma imagem sem olhos → ajuste os olhos → coloque no site**.
+O processo é curto: **gere as poses → prepare com um comando → confira e coloque no site**.
 Pode ser um personagem descrito por você ou uma arte baseada em uma referência sua.
 Criar uma imagem nova depende da ferramenta de geração que você tiver disponível.
 
@@ -188,23 +190,27 @@ Depois coloque ele na minha página e confira o resultado.
 ```
 
 Para ajustar visualmente, com a demonstração ligada abra o
-**[editor de olhos](http://localhost:4173/demo/personalizar.html)**. Sua imagem fica
+**[revisor de poses](http://localhost:4173/demo/personalizar.html)**. Sua imagem fica
 no navegador, sem upload. Você pode testar fundos claro/escuro e copiar a configuração.
 
 O [guia de criação](skills/mascote-cursor/references/criar.md) explica o pedido de imagem,
-a transparência e o encaixe. Sua criação fica no seu projeto; a coleção pronta continua
+o comando de preparação, a transparência e o alinhamento. Sua criação fica no seu projeto; a coleção pronta continua
 com dez personagens.
 
 ## Por que é simples de replicar?
 
-- **Uma imagem por personagem.** Olhos e reação são camadas do componente; não há poses para alinhar.
+- **Um PNG por personagem.** As doze poses já vêm preparadas e alinhadas.
 - **Uma skill completa.** O agente encontra instruções, arquivos e instalador no mesmo lugar.
 - **Sem dependências de execução.** Não precisa React, biblioteca de animação, Python ou servidor próprio.
 - **Uma cópia local.** Depois de integrado, o componente não depende de uma CDN nem faz chamadas de IA.
 - **Cuidados já incluídos.** Teclado, toque, movimento reduzido, pausa e liberação de recursos.
 
-O efeito é uma ilustração frontal com olhos móveis e uma leve inclinação. Ele não
-é um modelo 3D e não gira o rosto para mostrar ângulos que não foram desenhados.
+A cabeça muda de perspectiva com poses desenhadas. O motor escolhe uma das nove
+direções e evita tremor perto das fronteiras entre elas. Não é um modelo 3D contínuo.
+
+**Já usava a versão 1?** Os nomes prontos continuam iguais. Atualize motor e PNGs juntos.
+Artes próprias com `imagem` + `olhos` precisam virar uma folha de poses com `atlas`.
+Veja a [migração](skills/mascote-cursor/references/criar.md#migração-da-versão-1).
 
 ## Perguntas rápidas
 

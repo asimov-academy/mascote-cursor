@@ -1,4 +1,4 @@
-/** Catálogo autoral. Coordenadas dos olhos em porcentagem da imagem inteira. */
+/** Dez personagens autorais. Cada PNG contém nove direções e três expressões. */
 export const mascotes = [
   {
     id: "capi",
@@ -6,7 +6,6 @@ export const mascotes = [
     especie: "Capivara",
     personalidade: "Calma de quem já salvou o arquivo.",
     cor: "#c9ded2",
-    olhos: [39, 32, 61, 32, 10, 12],
   },
   {
     id: "pingo",
@@ -14,7 +13,6 @@ export const mascotes = [
     especie: "Gotinha",
     personalidade: "Uma boa ideia sempre puxa outra.",
     cor: "#c8dff1",
-    olhos: [41, 47, 59, 47, 9, 11],
   },
   {
     id: "broto",
@@ -22,7 +20,6 @@ export const mascotes = [
     especie: "Plantinha",
     personalidade: "Pequenos começos, grandes possibilidades.",
     cor: "#d5e1b9",
-    olhos: [41, 47, 59, 47, 9, 11],
   },
   {
     id: "faisca",
@@ -30,7 +27,6 @@ export const mascotes = [
     especie: "Chaminha",
     personalidade: "A energia de tirar uma ideia do papel.",
     cor: "#f4d294",
-    olhos: [41, 47, 59, 47, 9, 11],
   },
   {
     id: "lume",
@@ -38,7 +34,6 @@ export const mascotes = [
     especie: "Mariposinha",
     personalidade: "Curiosidade acesa até de madrugada.",
     cor: "#d6c9e9",
-    olhos: [40, 41, 60, 41, 9, 11],
   },
   {
     id: "caju",
@@ -46,7 +41,6 @@ export const mascotes = [
     especie: "Cajuzinho",
     personalidade: "Um jeitinho brasileiro de ser diferente.",
     cor: "#efc7a6",
-    olhos: [41, 47, 59, 47, 9, 11],
   },
   {
     id: "bento",
@@ -54,7 +48,6 @@ export const mascotes = [
     especie: "Vira-lata caramelo",
     personalidade: "Seu próximo projeto ganhou companhia.",
     cor: "#e6d4be",
-    olhos: [40, 37, 60, 37, 9, 11],
   },
   {
     id: "nimbo",
@@ -62,7 +55,6 @@ export const mascotes = [
     especie: "Nuvem",
     personalidade: "Cabeça nas nuvens. Ideias também.",
     cor: "#d8d5e7",
-    olhos: [40, 41, 60, 41, 9, 11],
   },
   {
     id: "tico",
@@ -70,7 +62,6 @@ export const mascotes = [
     especie: "Robozinho",
     personalidade: "Um pouco de lógica, um tanto de afeto.",
     cor: "#bfdfd8",
-    olhos: [39, 38, 61, 38, 10, 12],
   },
   {
     id: "grao",
@@ -78,6 +69,5 @@ export const mascotes = [
     especie: "Grão de café",
     personalidade: "Companheiro oficial do só mais um ajuste.",
     cor: "#dfcabb",
-    olhos: [39, 40, 60, 40, 9, 11],
   },
 ];

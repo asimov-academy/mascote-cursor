@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Seu próprio mascote — editor de olhos</title>
+    <title>Seu próprio mascote — revisor de poses</title>
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./editor.css" />
     <script type="module" src="./editor.js"></script>
@@ -13,14 +13,15 @@
       <span>MASCOTE CURSOR / ATELIÊ</span>
       <h1>Agora ele tem<br />o seu olhar.</h1>
       <p>
-        Carregue uma arte sem olhos, ajuste o rosto e copie a configuração.<br />Sua
-        imagem fica neste navegador. Nada é enviado a um servidor.
+        Carregue uma folha de poses, confira as direções e copie a
+        configuração.<br />Sua imagem fica neste navegador. Nada é enviado a um
+        servidor.
       </p>
     </header>
     <main>
       <section class="visual" aria-label="Prévia do mascote">
         <div id="fundo">
-          <mascote-cursor id="previa" tamanho="380" pausado></mascote-cursor>
+          <mascote-cursor id="previa" tamanho="380" quadro="4"></mascote-cursor>
         </div>
         <div class="acoes">
           <button id="tema" type="button">Ver em fundo escuro</button
@@ -30,21 +31,21 @@
         </div>
         <p>Mova o mouse e clique para fazer carinho.</p>
       </section>
-      <section class="controles" aria-label="Configuração dos olhos">
+      <section class="controles" aria-label="Revisão das poses">
         <label class="arquivo"
-          >1. Escolha sua imagem
-          <input id="arquivo" type="file" accept="image/png,image/webp"
+          >1. Escolha sua folha de poses
+          <input id="arquivo" type="file" accept="image/png"
         /></label>
         <p id="status" role="status">
-          Comece com a Capi de exemplo ou abra um PNG/WebP quadrado com
-          transparência.
+          Comece com a Capi de exemplo ou abra um atlas PNG transparente em
+          grade 3 × 4.
         </p>
-        <h2>2. Encontre o lugar dos olhos</h2>
-        <p>Os valores são porcentagens da imagem inteira.</p>
+        <h2>2. Confira cada direção</h2>
+        <p>
+          Esquerda e direita são os lados de quem olha para a tela. O corpo deve
+          permanecer alinhado.
+        </p>
         <div id="campos"></div>
-        <button type="button" id="restaurar">
-          Restaurar coordenadas do exemplo
-        </button>
         <h2>3. Leve para o seu site</h2>
         <label
           >Caminho público da sua imagem<input

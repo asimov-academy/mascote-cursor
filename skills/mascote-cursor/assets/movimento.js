@@ -1,49 +1,47 @@
-/** Vetor limitado a um círculo: a pupila nunca escapa do olho. */
-export function direcao(x, y, raio) {
-  if (![x, y, raio].every(Number.isFinite) || raio <= 0) return [0, 0];
+/** Ordem da folha: três colunas, quatro linhas. As três últimas são expressões. */
+export const poses = [
+  "acima-esquerda",
+  "acima",
+  "acima-direita",
+  "esquerda",
+  "frente",
+  "direita",
+  "abaixo-esquerda",
+  "abaixo",
+  "abaixo-direita",
+  "piscar",
+  "sorrir",
+  "alegria",
+];
+
+const vetores = poses.slice(0, 9).map((_, i) => {
+  const x = (i % 3) - 1,
+    y = Math.floor(i / 3) - 1;
+  const comprimento = Math.hypot(x, y) || 1;
+  return [x / comprimento, y / comprimento];
+});
+
+/** Escolhe a perspectiva da cabeça; uma margem impede tremor entre duas poses. */
+export function poseCabeca(x, y, atual = 4, raio = 28) {
+  if (![x, y, raio].every(Number.isFinite) || raio <= 0) return 4;
   const distancia = Math.hypot(x, y);
-  const divisor = Math.max(raio, distancia);
-  return [x / divisor, y / divisor];
+  if (distancia < raio * (atual === 4 ? 1.15 : 1)) return 4;
+  const notas = vetores.map(([vx, vy], i) =>
+    i === 4 ? -2 : (vx * x + vy * y) / distancia,
+  );
+  const melhor = notas.indexOf(Math.max(...notas));
+  if (atual !== 4 && notas[atual] >= notas[melhor] - 0.055) return atual;
+  return melhor;
 }
 
-/** Mola amortecida: massa 1, rigidez 100, amortecimento 10. */
-export function passo(posicao, velocidade, destino, segundos) {
-  // A solução em função do tempo mantém a duração mesmo com poucos quadros.
-  // Limita apenas pausas muito longas, não cada passo a um quadro de 60 Hz.
-  const dt = Math.min(Math.max(segundos, 0), 0.25);
-  const frequencia = Math.sqrt(75);
-  const decaimento = Math.exp(-5 * dt);
-  const seno = Math.sin(frequencia * dt);
-  const cosseno = Math.cos(frequencia * dt);
-  const deslocamento = posicao - destino;
-  return [
-    destino +
-      decaimento *
-        (deslocamento * cosseno +
-          ((velocidade + 5 * deslocamento) / frequencia) * seno),
-    decaimento *
-      (velocidade * cosseno -
-        ((5 * velocidade + 100 * deslocamento) / frequencia) * seno),
-  ];
+export function deslocamentoQuadro(indice) {
+  if (!Number.isInteger(indice) || indice < 0 || indice > 11)
+    throw new Error("O quadro precisa ser um número inteiro de 0 a 11.");
+  return `translate(${(-(indice % 3) * 100) / 3}%,${-Math.floor(indice / 3) * 25}%)`;
 }
 
-export function lerOlhos(valor, padrao) {
-  if (!valor) return padrao;
-  const numeros = valor.split(",").map(Number);
-  if (
-    numeros.length !== 6 ||
-    numeros.some((n) => !Number.isFinite(n) || n <= 0 || n >= 100)
-  ) {
-    throw new Error(
-      'Use olhos="41,47,59,47,9,11": x e y de cada olho, largura e altura, em porcentagem.',
-    );
-  }
-  const [x1, y1, x2, y2, largura, altura] = numeros;
-  if (
-    [x1, x2].some((x) => x < largura / 2 || x > 100 - largura / 2) ||
-    [y1, y2].some((y) => y < altura / 2 || y > 100 - altura / 2)
-  ) {
-    throw new Error("Os olhos precisam caber inteiros dentro da imagem.");
-  }
-  return numeros;
+export function validarDimensoes(largura, altura) {
+  return (
+    largura >= 96 && altura >= 128 && Math.abs(largura / 3 - altura / 4) <= 2
+  );
 }

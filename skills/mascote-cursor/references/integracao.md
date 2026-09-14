@@ -27,28 +27,43 @@ nos tipos JSX. O exemplo aceita uma URL pública no `modulo`, que pode incluir o
 do deploy. Não transforme o layout inteiro em componente cliente.
 
 ```tsx
-'use client';
+"use client";
 
-import { createElement, useEffect, useState } from 'react';
+import { createElement, useEffect, useState } from "react";
 
 export function Mascote({
-  nome = 'capi', tamanho = 160,
-  modulo = '/mascote-cursor/mascote.js',
-}: { nome?: string; tamanho?: number; modulo?: string }) {
+  nome = "capi",
+  tamanho = 160,
+  modulo = "/mascote-cursor/mascote.js",
+}: {
+  nome?: string;
+  tamanho?: number;
+  modulo?: string;
+}) {
   const [erro, setErro] = useState(false);
   useEffect(() => {
     let ativo = true;
     setErro(false);
     // URL em public: carrega no navegador, sem empacotar como código-fonte.
-    import(/* webpackIgnore: true */ /* @vite-ignore */ modulo)
-      .catch(() => { if (ativo) setErro(true); });
-    return () => { ativo = false; };
+    import(/* webpackIgnore: true */ /* @vite-ignore */ modulo).catch(() => {
+      if (ativo) setErro(true);
+    });
+    return () => {
+      ativo = false;
+    };
   }, [modulo]);
 
-  if (erro) return <p>Não consegui carregar o mascote. Confira o caminho do módulo.</p>;
-  return createElement('mascote-cursor', {
-    mascote: nome, tamanho: String(tamanho),
-    style: { display: 'inline-block', width: tamanho, maxWidth: '100%', aspectRatio: '1' },
+  if (erro)
+    return <p>Não consegui carregar o mascote. Confira o caminho do módulo.</p>;
+  return createElement("mascote-cursor", {
+    mascote: nome,
+    tamanho: String(tamanho),
+    style: {
+      display: "inline-block",
+      width: tamanho,
+      maxWidth: "100%",
+      aspectRatio: "1",
+    },
   });
 }
 ```
@@ -75,14 +90,14 @@ Não carregue recursos do DOM durante SSR.
 
 ## Atributos
 
-| Atributo | Padrão | Uso |
-| --- | --- | --- |
-| `mascote` | `capi` | Identificador do catálogo, sem acento. |
-| `tamanho` | `160` | Largura em pixels, de 48 a 800. Altura proporcional. |
-| `rotulo` | Fazer carinho em + nome | Nome acessível do botão. |
-| `pausado` | ausente | Presença pausa acompanhamento; o carinho continua disponível sem transição. |
-| `imagem` | ausente | Caminho de uma imagem própria; substitui a arte do catálogo. |
-| `olhos` | configuração do mascote | `x1,y1,x2,y2,largura,altura`, em porcentagem da imagem inteira. |
+| Atributo  | Padrão                  | Uso                                                                         |
+| --------- | ----------------------- | --------------------------------------------------------------------------- |
+| `mascote` | `capi`                  | Identificador do catálogo, sem acento.                                      |
+| `tamanho` | `160`                   | Largura em pixels, de 48 a 800. Altura proporcional.                        |
+| `rotulo`  | Fazer carinho em + nome | Nome acessível do botão.                                                    |
+| `pausado` | ausente                 | Presença pausa acompanhamento; o carinho continua disponível sem transição. |
+| `atlas`   | ausente                 | URL de uma folha própria, 3 colunas × 4 linhas.                             |
+| `quadro`  | ausente                 | Fixa uma pose de 0 a 11 para revisão, desativando o acompanhamento.         |
 
 `pausado="false"` também pausa: atributos booleanos dependem da presença. Remova-o
 para retomar. Em JS use `elemento.toggleAttribute('pausado', devePausar)`.
@@ -105,7 +120,7 @@ Uma imagem ou configuração inválida exibe texto e desabilita o botão até co
 2. Confira `catalogo.js`, `movimento.js` e `mascotes/<nome>.png` ao lado do módulo.
 3. Confira erros no console, prefixo público, maiúsculas e extensões.
 4. Com touch ou preferência por movimento reduzido, não seguir o cursor é intencional.
-5. Se a imagem própria tem olhos desenhados, eles se duplicam. Gere uma base sem olhos.
+5. Para arte própria, use um atlas 3 × 4 com rosto completo. `imagem` e `olhos` pertencem à versão 1; veja a migração no guia de criação.
 
 Navegadores modernos com Custom Elements e Shadow DOM são necessários.
 O componente injeta CSS em seu Shadow DOM; sites com CSP que proíbe estilos inline

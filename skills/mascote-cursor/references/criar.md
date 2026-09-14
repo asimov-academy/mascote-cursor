@@ -1,68 +1,96 @@
-# Um personagem só seu
+# Seu personagem, olhando para o mouse
 
-Uma arte, dois olhos animados. O rosto é montado no navegador, então o arquivo base
-precisa estar sem olhos. Isso evita redesenhar o personagem a cada reação.
+O mascote usa uma **folha de poses**: um PNG com 3 colunas e 4 linhas. As nove primeiras
+imagens mostram a cabeça em direções diferentes; as três últimas são expressões.
+Olhos, focinho, orelhas e perspectiva fazem parte da arte. O corpo mantém a posição.
+Para usar um dos dez prontos, pule este processo e execute o instalador.
 
-## 1. Descreva e gere a base
+## 1. Gere a folha
 
-Pergunte só o que faltar para uma escolha importante. Se a pessoa pediu um personagem
-concreto, desenvolva cores e detalhes coerentes sem pedir um briefing longo.
-Use uma ferramenta de geração de imagem disponível; não escolha uma API paga ou
-envie uma foto para um serviço diferente sem autorização. Sem ferramenta disponível,
-entregue este pedido para a pessoa usar no gerador de sua preferência:
+Use a ferramenta de imagem disponível, respeitando a escolha da pessoa. Se ela já
+forneceu um personagem, inspecione a referência e preserve a identidade. Não use artes
+de terceiros sem autorização. Sem ferramenta de imagem, forneça o pedido abaixo e
+permita que a pessoa traga a folha pronta; não invente uma geração bem-sucedida.
 
-> Crie um único mascote original: [DESCRIÇÃO]. Miniatura de argila fosca, formas
-> arredondadas, textura delicada e luz suave. Vista frontal, corpo inteiro, composição
-> quadrada e espaço transparente ao redor. Deixe o rosto liso e SEM OLHOS, pálpebras,
-> sobrancelhas ou cavidades: os olhos serão colocados pelo código. Reserve uma área
-> livre e simétrica no rosto para eles. Desenhe apenas nariz, se fizer sentido, e
-> uma boca pequena abaixo dessa área. Sem chão, texto, moldura ou outros personagens.
-> Exporte PNG com transparência real, não um fundo quadriculado desenhado.
+Prompt autoral — substitua a descrição entre colchetes:
 
-Para imagem de referência, preserve apenas os traços escolhidos pela pessoa e adapte
-ao estilo. Não diga que foi desenhado à mão: artes geradas devem ser identificadas como tal.
+> Crie uma folha de animação de [DESCRIÇÃO DO PERSONAGEM], em estilo de miniatura de
+> argila fosca, expressiva e acolhedora. Um único personagem consistente, rosto completo,
+> olhos grandes com brilho, cabeça e ombros apenas. Exatamente 3 colunas por 4 linhas,
+> 12 células quadradas, tela na proporção 3:4. Mantenha escala, luz, cores e acessórios.
+> Ombros sempre de frente, mesma base e mesmo ponto de apoio. Só a cabeça gira de
+> verdade: focinho, orelhas e perspectiva mudam juntos. Não basta deslocar as pupilas
+> ou inclinar a ilustração inteira. Esquerda e direita são os lados de quem vê a tela.
+> Linha 1: cabeça para cima e esquerda, cima, cima e direita.
+> Linha 2: esquerda, frente neutra, direita.
+> Linha 3: baixo e esquerda, baixo, baixo e direita.
+> Linha 4: frente piscando, frente sorrindo de olhos fechados, frente alegre de olhos abertos.
+> Giros horizontais de aproximadamente 40 graus e verticais de 22 graus.
+> Cada busto ocupa no máximo 78% de sua célula, com folga entre todas as poses.
+> Fundo uniforme magenta puro #ff00ff, sem gradiente, sombra, textura ou quadriculado.
+> Não inclua texto, números, guias, acessórios novos, mãos, pés ou corpo inteiro.
 
-## 2. Confira a arte
+Escolha outra cor de fundo se o personagem contiver magenta e ajuste `--fundo` abaixo.
+Também é possível gerar transparência real e omitir `--fundo`. Um desenho quadriculado
+não é transparência. PNG precisa ser RGB/RGBA de 8 bits, sem entrelaçamento; exporte
+nesse formato se o gerador entregar outro.
 
-Abra a imagem. Verifique silhueta inteira, ausência de olhos, área livre para o rosto,
-um personagem somente e transparência real. Confira sobre um fundo claro e outro
-escuro. Se a arte não atende, ajuste uma vez o pedido com o erro observado. Se ainda
-falhar, explique a limitação e proponha outra descrição, sem entrar em repetição de gerações.
+## 2. Prepare com um comando
 
-Para uma exibição de até 256 pixels, PNG quadrado de 512 × 512 é suficiente na maioria
-das telas. Redimensionar preservando alpha é uma otimização de entrega, não uma nova arte.
-Não corte automaticamente a imagem depois de definir as coordenadas dos olhos.
+Requer Node 22 ou superior. Use os scripts da pasta onde esta skill está instalada:
 
-## 3. Posicione os olhos
+```bash
+node "<pasta-da-skill>/scripts/preparar.mjs" \
+  --entrada "minha-folha.png" \
+  --saida "<pasta-publica>/mascote-cursor/mascotes/meu-personagem.png" \
+  --fundo '#ff00ff' --json
+```
 
-Com o repositório aberto, execute `npm run dev` e visite `/demo/personalizar.html`.
-O editor também está em `assets/editor/` nesta skill: pode ser servido junto dos
-arquivos do componente, em uma pasta de trabalho, sem colocá-lo em produção.
-O arquivo escolhido fica só no navegador; não é enviado a servidor algum.
-Carregue a imagem, ajuste os seis campos e confira a reação. Copie a configuração.
+O preparador remove a cor de fundo conectada às bordas, encontra o espaço entre poses,
+alinha a base dos ombros e aplica uma escala única. Exporta um atlas transparente de
+768 × 1024, com 12 quadros de 256 × 256. Não usa serviços externos nem pacotes adicionais.
+Recusa poses sobrepostas, arquivo vazio e saída já existente. `--substituir` permite
+atualizar uma saída deliberadamente; a entrada é preservada. `--inverter-lados` troca
+as colunas esquerda/direita das nove direções, sem espelhar o personagem, se o gerador
+entendeu os lados ao contrário. Não use isso sem conferir a imagem.
 
-Sem editor, identifique o centro de cada olho e o tamanho na imagem: cada coordenada
-é `100 × posição_em_pixels / dimensão_da_imagem`. A ordem é centro X e Y do olho
-esquerdo do espectador, centro X e Y do direito, largura e altura de cada olho.
-Use valores entre 0 e 100 e mantenha os olhos inteiros dentro da imagem.
+## 3. Confira no revisor
 
-## 4. Integre e valide
+Abra `assets/editor/index.html` pelo servidor estático que estiver servindo a skill.
+Neste repositório: `npm run dev` e http://localhost:4173/demo/personalizar.html.
+Carregue o PNG preparado. O arquivo fica apenas no navegador.
 
-Instale o motor pelo mesmo script dos mascotes prontos. Salve a arte própria junto
-das imagens do projeto. Use `imagem`, `olhos` e um `rotulo` explícito:
+Confira as doze poses nos botões, depois ative **Testar movimento**. Verifique:
+
+- A cabeça olha para o lado indicado, incluindo diagonais e cima/baixo.
+- Ombros, acessórios e tamanho permanecem consistentes, sem saltos visíveis.
+- Contorno limpo em fundo claro e escuro, sem magenta ou quadrados desenhados.
+- Orelhas, antenas e folhas inteiras, sem invadir a célula vizinha.
+
+O script verifica pixels e formato, não anatomia. Se alguma pose estiver errada,
+peça uma correção à ferramenta de imagem preservando todas as demais poses e a grade.
+Não aprove uma arte só porque o comando terminou. Após duas tentativas sem resolver,
+explique o problema e apresente a melhor prévia para a pessoa decidir o próximo ajuste.
+
+## 4. Integre
+
+Instale o motor conforme [integração](integracao.md), copie a configuração do revisor
+ou use:
 
 ```html
 <mascote-cursor
-  imagem="/mascote-cursor/mascotes/meu-personagem.png"
-  olhos="41,47,59,47,9,11"
-  rotulo="Fazer carinho em Pipoca"
-  tamanho="180"
+  atlas="/mascote-cursor/mascotes/meu-personagem.png"
+  rotulo="Fazer carinho no meu mascote"
 ></mascote-cursor>
 ```
 
-O exemplo de coordenadas é só ponto de partida. Valide no tamanho final, olhando
-para os quatro cantos e reagindo ao clique. Faça captura da versão montada para
-apresentar: mostrar somente o PNG sem olhos não representa o resultado.
+Carregue `mascote.js` uma vez. Confira na página final com mouse, toque, teclado e
+movimento reduzido. No celular, o toque aciona a expressão; não existe acompanhamento
+contínuo do dedo. Use tamanho de até 256 pixels para manter a nitidez nativa.
 
-Personagens próprios não precisam entrar no catálogo. Não aumente a coleção oficial
-de dez nem altere o comportamento dos outros mascotes para acomodar um novo.
+## Migração da versão 1
+
+Os dez nomes prontos continuam iguais. Atualize motor, catálogo, movimento e PNG juntos,
+em uma pasta nova se houver arquivos personalizados. Para arte própria, substitua
+`imagem` + `olhos` por `atlas` e gere uma folha de poses: uma única imagem frontal não
+contém as perspectivas necessárias. O componente mostra uma mensagem para atributos antigos.

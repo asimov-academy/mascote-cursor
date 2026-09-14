@@ -32,7 +32,7 @@ function executar(args, arquivo = script, cwd = process.cwd()) {
   return { status: r.status, dados: JSON.parse(r.stdout) };
 }
 
-test("o catálogo possui exatamente dez artes transparentes de 512 pixels", async () => {
+test("o catálogo possui exatamente dez atlas transparentes de 768 × 1024 pixels", async () => {
   assert.equal(mascotes.length, 10);
   assert.equal(new Set(mascotes.map((m) => m.id)).size, 10);
   const pasta = resolve("skills/mascote-cursor/assets/mascotes");
@@ -43,10 +43,10 @@ test("o catálogo possui exatamente dez artes transparentes de 512 pixels", asyn
   for (const m of mascotes) {
     const png = await readFile(join(pasta, m.id + ".png"));
     assert.equal(png.toString("hex", 0, 8), "89504e470d0a1a0a");
-    assert.equal(png.readUInt32BE(16), 512);
-    assert.equal(png.readUInt32BE(20), 512);
+    assert.equal(png.readUInt32BE(16), 768);
+    assert.equal(png.readUInt32BE(20), 1024);
     assert.equal(png[25], 6, "PNG precisa ter canal alpha");
-    assert.ok(png.length < 600000, "Arte acima do orçamento de 600 kB");
+    assert.ok(png.length < 1500000, "Arte acima do orçamento de 1,5 MB");
   }
 });
 

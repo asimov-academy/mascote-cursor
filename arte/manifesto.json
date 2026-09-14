@@ -1,0 +1,52 @@
+[
+  {
+    "id": "capi",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  },
+  {
+    "id": "pingo",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  },
+  {
+    "id": "broto",
+    "fundo": "#ff00ff",
+    "inverterLados": true
+  },
+  {
+    "id": "faisca",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  },
+  {
+    "id": "lume",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  },
+  {
+    "id": "caju",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  },
+  {
+    "id": "bento",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  },
+  {
+    "id": "nimbo",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  },
+  {
+    "id": "tico",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  },
+  {
+    "id": "grao",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  }
+]

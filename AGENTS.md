@@ -17,7 +17,7 @@ quem não programa. Não transforme o fluxo padrão em uma cadeia de geração d
 ## Regras de manutenção
 
 1. Preserve a quantidade de dez mascotes prontos. Personagens de usuários entram via
-   `imagem` e `olhos`, não por expansão do catálogo oficial.
+   `atlas`, não por expansão do catálogo oficial.
 2. Não use código, prompts, textos ou imagens da referência. A inspiração conceitual
    está documentada em `docs/processo.md`; não há dependência dela.
 3. Não duplique o motor em `src/`, `dist/` ou na demonstração. Todos usam a fonte na skill.
@@ -34,7 +34,7 @@ quem não programa. Não transforme o fluxo padrão em uma cadeia de geração d
 Para abrir a demonstração: `npm run dev` (Node 22 ou superior; não precisa npm install).
 Para os testes: `npm ci`, `npx playwright install chromium webkit`, `npm run verificar`.
 O Playwright só é dependência de desenvolvimento. Confira a demo em desktop e celular
-após mudanças visuais e veja os olhos no personagem montado. PNGs isolados são sem olhos.
+após mudanças visuais e confira as nove direções da cabeça no personagem montado. Cada PNG é uma grade 3 × 4 com rosto completo.
 
 Ao entregar, relate o resultado, os testes executados e qualquer limitação real.
 Não anuncie publicação no npm, GitHub Pages ou hospedagem que não tenha ocorrido.

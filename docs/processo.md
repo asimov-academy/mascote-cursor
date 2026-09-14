@@ -17,25 +17,26 @@ Essa abordagem permite mostrar poses desenhadas da cabeça. Seu custo de manuten
 
 ## A decisão deste projeto
 
-Aqui a unidade do personagem é **uma imagem frontal + a posição de dois olhos**.
-O corpo não muda de desenho quando alguém interage. As pupilas seguem o ponteiro;
-o conjunto ganha uma inclinação discreta; o carinho fecha os olhos e mostra um coração.
+Cada personagem usa **uma folha de 12 poses completas**: nove direções e três
+expressões. A cabeça muda de perspectiva, enquanto os ombros mantêm o apoio. O motor
+escolhe a direção pelo ângulo do mouse, com uma margem que evita alternância nervosa.
 
-Essa escolha troca poses desenhadas por movimento contínuo de camadas. Não é um
-substituto de animação 3D, mas reduz substancialmente os artefatos que precisam ser
-gerados, revisados, transportados e mantidos.
+A primeira versão simplificava o efeito para pupilas móveis e inclinação. Isso
+não reproduzia o acompanhamento da cabeça desejado. A versão 2 simplifica a instalação
+e a preparação, preservando as poses que dão identidade ao movimento.
 
-| Decisão | Consequência prática |
-| --- | --- |
-| Uma imagem por mascote | Uma geração de base e uma verificação visual. |
-| Olhos fora da arte | Coordenadas simples, ajustáveis no editor; expressão sem redesenho. |
-| Web Component | Mesmo motor para sites de diferentes tecnologias. |
-| Fonte dentro da skill | O pacote instalado já contém os recursos necessários. |
-| Copiar somente a arte escolhida | O projeto consumidor recebe apenas o que vai usar. |
-| Instalador sem rede | A cópia não depende de serviços de imagem, CDN ou chave de API. |
-| Falha em conflitos antes de escrever | Repetir a instalação não apaga personalizações. |
-| Português na interface e na skill | O mesmo vocabulário acompanha usuário e agente. |
-| Dez nomes estáveis | Catálogo curto, fácil de comparar e testar. |
+| Decisão                                 | Consequência prática                                            |
+| --------------------------------------- | --------------------------------------------------------------- |
+| Um atlas 3 × 4                          | Direções e expressões no mesmo PNG.                             |
+| Preparação com Node                     | Transparência, recorte e alinhamento em um comando, sem Python. |
+| Revisor de doze poses                   | Conferência visual antes da integração.                         |
+| Web Component                           | Mesmo motor para sites de diferentes tecnologias.               |
+| Fonte dentro da skill                   | O pacote instalado já contém todos os recursos de uso.          |
+| Copiar somente a arte escolhida         | O site recebe apenas o que usa.                                 |
+| Instalador sem rede                     | A cópia não depende de CDN, serviço de imagem ou API.           |
+| Conflitos verificados antes de escrever | Repetir não apaga personalizações.                              |
+| Português do pedido à entrega           | Menos decisões técnicas para quem está começando.               |
+| Dez nomes estáveis                      | Catálogo curto, fácil de comparar e testar.                     |
 
 ## O caminho de quem usa
 
@@ -48,22 +49,22 @@ Essas decisões não ficam como uma lista de tarefas técnicas para a pessoa ini
 
 ## O caminho de quem cria
 
-1. Definir personagem e gerar uma base sem olhos, com fundo transparente.
-2. Abrir no editor, ajustar seis valores e conferir claro/escuro.
-3. Salvar a arte no projeto e usar os atributos `imagem` e `olhos`.
-4. Verificar o resultado no tamanho em que será exibido.
+1. Descrever o personagem e gerar uma folha 3 × 4 com rosto completo.
+2. Preparar o PNG com `scripts/preparar.mjs`: remover fundo, recortar e alinhar.
+3. Conferir as doze poses e o movimento em fundos claro e escuro no revisor.
+4. Usar o atributo `atlas` e verificar o resultado na página real.
 
-Sem configuração de modelo fixa, execução de API escondida ou promessa de que toda
-imagem fica correta na primeira tentativa. O guia inclui critério de aceitação e
-limite de repetição para a etapa criativa.
+Não há configuração fixa de modelo nem execução de API escondida. A geração pode
+precisar de correções. O preparador não verifica anatomia; essa revisão é explícita
+no processo. Fontes e opções de reconstrução estão em [arte](../arte/README.md).
 
 ## Desempenho e limites
 
-Há um único conjunto de listeners de ponteiro por página. Um loop de quadros é
-agendado quando necessário e termina quando a mola repousa. Instâncias fora da tela
+Há um único conjunto de listeners de ponteiro por página. Um único quadro é
+agendado por lote de eventos; não há loop permanente. Instâncias fora da tela
 não animam; esconder a aba ou remover os elementos limpa os recursos correspondentes.
 
-As imagens distribuídas são PNGs de 512 × 512 com alpha. O tamanho de referência é
+As imagens distribuídas são atlas PNG de 768 × 1024 com alpha, cada pose de 256 × 256. O tamanho de referência é
 160 pixels. Ampliações muito grandes podem revelar os limites da imagem raster.
 Os testes usam Chromium e WebKit, além de uma configuração móvel; integração em
 projetos de frameworks específicos ainda precisa dos checks daquele projeto.
