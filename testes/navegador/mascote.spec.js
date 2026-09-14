@@ -72,13 +72,18 @@ test("clique ou toque faz carinho e termina a reação", async ({
   page,
   isMobile,
 }) => {
+  await page.clock.install();
   await abrir(page);
+  await page.clock.pauseAt(new Date());
   const m = page.locator("#principal");
   if (isMobile) await m.locator("button").tap();
   else await m.locator("button").click();
+  await page.clock.runFor(200);
   await expect(m.locator(".corpo")).toHaveClass(/feliz/);
   await expect(m.locator(".carinho")).toHaveCSS("opacity", "1");
-  await expect(m.locator(".corpo")).not.toHaveClass(/feliz/, { timeout: 2500 });
+  await expect.poll(() => m.evaluate((m) => m.quadroAtual)).toBe(10);
+  await page.clock.runFor(800);
+  await expect(m.locator(".corpo")).not.toHaveClass(/feliz/);
 });
 
 test("Enter e Espaço oferecem a mesma interação acessível", async ({
