@@ -36,7 +36,20 @@ test("a mola converge e aceita reversão sem pular para o destino", () => {
 
 test("voltar de uma aba suspensa não provoca salto numérico", () => {
   const [p, v] = passo(0, 0, 1, 10000);
-  assert.ok(p < 0.1 && Number.isFinite(v));
+  assert.ok(p >= 0 && p < 1.3 && Number.isFinite(v));
+});
+
+test("o movimento leva o mesmo tempo a 60, 30 e 10 quadros por segundo", () => {
+  const resultados = [60, 30, 10].map((fps) => {
+    let p = 0,
+      v = 0;
+    for (let i = 0; i < fps; i++) [p, v] = passo(p, v, 1, 1 / fps);
+    return [p, v];
+  });
+  for (const [p, v] of resultados) {
+    assert.ok(Math.abs(p - resultados[0][0]) < 1e-10);
+    assert.ok(Math.abs(v - resultados[0][1]) < 1e-10);
+  }
 });
 
 test("coordenadas inválidas ou olhos fora da imagem não são aceitos", () => {

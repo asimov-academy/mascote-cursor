@@ -8,9 +8,23 @@ export function direcao(x, y, raio) {
 
 /** Mola amortecida: massa 1, rigidez 100, amortecimento 10. */
 export function passo(posicao, velocidade, destino, segundos) {
-  const dt = Math.min(Math.max(segundos, 0), 1 / 60);
-  const v = velocidade + ((destino - posicao) * 100 - velocidade * 10) * dt;
-  return [posicao + v * dt, v];
+  // A solução em função do tempo mantém a duração mesmo com poucos quadros.
+  // Limita apenas pausas muito longas, não cada passo a um quadro de 60 Hz.
+  const dt = Math.min(Math.max(segundos, 0), 0.25);
+  const frequencia = Math.sqrt(75);
+  const decaimento = Math.exp(-5 * dt);
+  const seno = Math.sin(frequencia * dt);
+  const cosseno = Math.cos(frequencia * dt);
+  const deslocamento = posicao - destino;
+  return [
+    destino +
+      decaimento *
+        (deslocamento * cosseno +
+          ((velocidade + 5 * deslocamento) / frequencia) * seno),
+    decaimento *
+      (velocidade * cosseno -
+        ((5 * velocidade + 100 * deslocamento) / frequencia) * seno),
+  ];
 }
 
 export function lerOlhos(valor, padrao) {
