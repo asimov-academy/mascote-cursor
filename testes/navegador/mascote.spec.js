@@ -72,9 +72,9 @@ test("clique ou toque faz carinho e termina a reação", async ({
   page,
   isMobile,
 }) => {
-  await page.clock.install();
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
   await abrir(page);
-  await page.clock.pauseAt(new Date());
+  await page.clock.pauseAt(new Date("2026-01-01T00:01:00Z"));
   const m = page.locator("#principal");
   if (isMobile) await m.locator("button").tap();
   else await m.locator("button").click();
