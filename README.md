@@ -117,7 +117,7 @@ npm run dev
 ```
 
 Abra **[localhost:4173](http://localhost:4173)** no navegador. Você pode conhecer os
-dez mascotes, testar o carinho e copiar um pedido pronto para o agente.
+dez mascotes, testar o carinho e seguir o tutorial: acessar o GitHub, instalar a skill e só então pedir a integração ao agente.
 Precisa de Node.js 22 ou superior; para a demonstração, **não precisa executar
 `npm install`**. Para encerrar, use `Ctrl+C` no terminal.
 

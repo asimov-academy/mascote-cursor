@@ -217,3 +217,29 @@ test("revisor aceita atlas local e permite conferir todas as poses", async ({
   await page.getByRole("button", { name: "Ver em fundo escuro" }).click();
   await expect(page.locator("#fundo")).toHaveClass("escuro");
 });
+
+test("divulgação encaminha ao GitHub e explica a instalação antes do pedido", async ({
+  page,
+}) => {
+  await abrir(page);
+  await expect(page.locator("main a")).toHaveCount(1);
+  await expect(
+    page.getByRole("link", { name: "Baixar a skill no GitHub" }),
+  ).toHaveAttribute(
+    "href",
+    "https://github.com/asimov-academy/mascote-cursor#comece-por-aqui",
+  );
+  await expect(page.getByRole("button", { name: /copiar/i })).toHaveCount(0);
+  await expect(page.locator(".passos li")).toHaveCount(3);
+  await expect(page.locator(".passos li").nth(1)).toContainText(
+    "npx skills add asimov-academy/mascote-cursor",
+  );
+  await expect(page.locator("#pedido")).toContainText("Já instalei a skill");
+  await page
+    .getByRole("button", { name: "Escolher Bento", exact: true })
+    .click();
+  await expect(page.locator("#pedido")).toContainText("Bento (bento)");
+  await expect(page.locator("#pedido")).toContainText(
+    "https://github.com/asimov-academy/mascote-cursor",
+  );
+});

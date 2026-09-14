@@ -65,7 +65,7 @@ agendado por lote de eventos; não há loop permanente. Instâncias fora da tela
 não animam; esconder a aba ou remover os elementos limpa os recursos correspondentes.
 
 As imagens distribuídas são atlas PNG de 1536 × 2048 com alpha, cada célula de 512 × 512. O tamanho de referência é
-160 pixels. A exportação mantém a escala da fonte quando ela cabe na célula, sem ampliar artificialmente. A página exibe o destaque em 168 pixels para atender telas de alta densidade. Ampliações muito grandes podem revelar os limites da imagem raster.
+160 pixels. A exportação mantém a escala da fonte quando ela cabe na célula, sem ampliar artificialmente. A página exibe o destaque em até 256 pixels, reduzindo para 170 pixels em densidade 3× para preservar a nitidez. Ampliações muito grandes podem revelar os limites da imagem raster.
 Os testes usam Chromium e WebKit, além de uma configuração móvel; integração em
 projetos de frameworks específicos ainda precisa dos checks daquele projeto.
 
