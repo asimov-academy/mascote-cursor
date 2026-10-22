@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { resolve } from "node:path";
+import { readFile } from "node:fs/promises";
+import { lerPNG } from "../../skills/mascote-cursor/scripts/png.mjs";
 
 async function abrir(page) {
   await page.goto("/");
@@ -242,4 +244,126 @@ test("divulgação encaminha ao GitHub e explica a instalação antes do pedido"
   await expect(page.locator("#pedido")).toContainText(
     "https://github.com/asimov-academy/mascote-cursor",
   );
+});
+
+test("atlas em SVG carrega sem preparo e acompanha as nove direções", async ({
+  page,
+  isMobile,
+}) => {
+  await abrir(page);
+  const m = page.locator("#principal");
+  await m.evaluate((m) => {
+    m.style.position = "fixed";
+    m.style.left = "350px";
+    m.style.top = "250px";
+    m.setAttribute("tamanho", "160");
+    m.setAttribute(
+      "atlas",
+      "/skills/mascote-cursor/references/exemplo-atlas.svg",
+    );
+  });
+  await expect.poll(() => m.evaluate((m) => m.carregado)).toBe(true);
+  // Cantos das células transparentes e cabeça opaca no centro de cada pose.
+  // Uma imagem nova evita que o WebKit rasterize só o trecho visível do atlas.
+  const grade = await m.evaluate(async (m) => {
+    const img = new Image();
+    img.src = m.foto.src;
+    await img.decode();
+    const c = document.createElement("canvas");
+    c.width = img.naturalWidth;
+    c.height = img.naturalHeight;
+    const ctx = c.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    const alpha = (x, y) => ctx.getImageData(x, y, 1, 1).data[3];
+    return Array.from({ length: 12 }, (_, i) => {
+      const x = (i % 3) * 512,
+        y = Math.floor(i / 3) * 512;
+      return { canto: alpha(x + 8, y + 8), cabeca: alpha(x + 256, y + 250) };
+    }).concat({ largura: c.width, altura: c.height });
+  });
+  expect(grade.pop()).toEqual({ largura: 1536, altura: 2048 });
+  expect(grade).toEqual(Array(12).fill({ canto: 0, cabeca: 255 }));
+  test.skip(isMobile, "Toque não acompanha movimento.");
+  const b = await m.boundingBox();
+  for (let i = 0; i < 9; i++) {
+    await page.mouse.move(
+      b.x + b.width / 2 + ((i % 3) - 1) * 180,
+      b.y + b.height * 0.45 + (Math.floor(i / 3) - 1) * 180,
+    );
+    await expect.poll(() => m.evaluate((m) => m.quadroAtual)).toBe(i);
+  }
+});
+
+test("revisor aceita SVG direto e também o converte em PNG", async ({
+  page,
+}) => {
+  await page.goto("/skills/mascote-cursor/assets/editor/");
+  await page
+    .locator("#arquivo")
+    .setInputFiles(
+      resolve("skills/mascote-cursor/references/exemplo-atlas.svg"),
+    );
+  await expect(page.locator("#status")).toContainText("SVG vai direto");
+  await expect(page.locator("#transparente")).toBeChecked();
+  await expect
+    .poll(() => page.locator("#previa").evaluate((m) => m.carregado))
+    .toBe(true);
+  await expect(page.locator("#resultado")).toContainText("meu-personagem.svg");
+  // Quem preferir PNG converte o mesmo SVG, já transparente, no revisor.
+  await page.getByRole("button", { name: "Preparar folha" }).click();
+  await expect(page.locator("#status")).toContainText("Folha preparada");
+  await expect(page.locator("#resultado")).toContainText("meu-personagem.png");
+});
+
+test("revisor prepara uma folha JPG e entrega PNG transparente", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "Download coberto nos navegadores de mesa.");
+  await page.goto("/skills/mascote-cursor/assets/editor/");
+  // Folha sintética 3 × 4 com fundo magenta, como sai de um gerador sem alpha.
+  const jpg = await page.evaluate(async () => {
+    const c = document.createElement("canvas");
+    c.width = 384;
+    c.height = 512;
+    const ctx = c.getContext("2d");
+    ctx.fillStyle = "#ff00ff";
+    ctx.fillRect(0, 0, 384, 512);
+    for (let i = 0; i < 12; i++) {
+      const x = (i % 3) * 128,
+        y = Math.floor(i / 3) * 128;
+      ctx.fillStyle = `rgb(${40 + (i % 3) * 60},140,60)`;
+      ctx.beginPath();
+      ctx.arc(x + 64, y + 56, 30, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillRect(x + 34, y + 70, 60, 40);
+    }
+    return c.toDataURL("image/jpeg", 0.9).split(",")[1];
+  });
+  await page.locator("#arquivo").setInputFiles({
+    name: "folha.jpg",
+    mimeType: "image/jpeg",
+    buffer: Buffer.from(jpg, "base64"),
+  });
+  await expect(page.locator("#status")).toContainText(
+    "JPG não tem transparência",
+  );
+  await page.getByRole("button", { name: "Preparar folha" }).click();
+  await expect(page.locator("#status")).toContainText(
+    "Folha preparada: 1536 × 2048",
+  );
+  const m = page.locator("#previa");
+  await expect.poll(() => m.evaluate((m) => m.carregado)).toBe(true);
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("link", { name: "Baixar PNG preparado" }).click(),
+  ]);
+  expect(download.suggestedFilename()).toBe("meu-personagem.png");
+  // O PNG baixado é lido pelo mesmo leitor do preparador de linha de comando.
+  const png = lerPNG(await readFile(await download.path()));
+  expect([png.largura, png.altura]).toEqual([1536, 2048]);
+  expect(png.pixels[3]).toBe(0);
+  // A base dos ombros fica a 91% da célula; logo acima dela há corpo opaco.
+  const corpo = ((512 + 446) * 1536 + 256) * 4;
+  expect(png.pixels[corpo + 3]).toBe(255);
 });

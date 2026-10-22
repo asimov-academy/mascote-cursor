@@ -41,6 +41,9 @@ Código, arte e documentação são distribuídos com a licença do projeto.
 | `tico.png`   | Robô turquesa arredondado, placa facial marfim e antena laranja.                   |
 | `grao.png`   | Grão de café castanho, sulco lateral curvo e pequeno lenço creme.                  |
 
+O exemplo `skills/mascote-cursor/references/exemplo-atlas.svg` (Bolota) foi desenhado
+em código para este projeto, como modelo do caminho em SVG. Não faz parte da coleção.
+
 O [guia de criação](../skills/mascote-cursor/references/criar.md) contém um prompt
 autoral reutilizável. Gerações futuras podem variar; os arquivos versionados aqui
 são a versão pronta da coleção.

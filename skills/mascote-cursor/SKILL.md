@@ -23,11 +23,11 @@ Ao entregar, diga qual mascote entrou, em qual página, quais arquivos mudaram e
 
 - **Outro dos dez:** execute o instalador com o novo nome e altere `mascote`. Não copie a coleção inteira sem necessidade.
 - **Tamanho, posição ou pausa:** use os atributos e o CSS documentados em [integração](references/integracao.md). Não edite os pixels para isso.
-- **Personagem autoral ou foto de referência:** leia [criar um mascote](references/criar.md). Gere uma folha 3 × 4 com nove direções reais da cabeça e três expressões; prepare com `scripts/preparar.mjs` e confira no revisor de poses. Use a ferramenta de imagem disponível, respeitando a escolha do usuário. Sem ferramenta, permita usar uma imagem fornecida ou explique a opção de gerar manualmente.
+- **Personagem autoral ou foto de referência:** leia [criar um mascote](references/criar.md). O resultado é uma folha 3 × 4 com nove direções da cabeça e três expressões. Comece pelo passo 0: veja quais ferramentas existem nesta sessão e escolha, ou pergunte, entre quatro caminhos: (a) gerador de imagem do próprio agente, (b) MCP de imagem conectado, (c) a pessoa gera em outro serviço com o pedido pronto, (d) você desenha um SVG seguindo [mascote em SVG](references/svg.md). Folhas geradas em PNG, JPG ou WebP passam pelo preparo (`scripts/preparar.mjs` ou o revisor no navegador); o SVG já sai pronto. Confira sempre no revisor de poses. Não diga que gerou uma imagem que não foi gerada.
 - **Site ainda não existe:** monte uma página mínima na tecnologia escolhida pela pessoa. Não inicie uma reconstrução completa de produto para adicionar o mascote.
 
 ## Contrato do componente
 
 `<mascote-cursor mascote="capi" tamanho="160"></mascote-cursor>` é um Web Component com estilos isolados. O CSS da página não altera as poses internas. O motor já oferece teclado, toque, pausa, movimento reduzido e descarte de listeners ao remover a instância. Preserve essas propriedades ao adaptar. Cada PNG contém as doze poses completas. Não substitua a rotação da cabeça por pupilas móveis ou inclinação do corpo.
 
-Arquivos canônicos: `assets/mascote.js`, `assets/movimento.js`, `assets/catalogo.js` e `assets/mascotes/`. Não invente um pacote publicado ou uma CDN. Use estes arquivos locais. O conjunto pronto continua com exatamente dez personagens; criações do usuário ficam no projeto dele, fora deste catálogo.
+Arquivos canônicos: `assets/mascote.js`, `assets/movimento.js`, `assets/catalogo.js` e `assets/mascotes/`. O preparo de folhas próprias fica em `scripts/atlas.js`, usado pelo comando e pelo revisor. Não invente um pacote publicado ou uma CDN. Use estes arquivos locais. O conjunto pronto continua com exatamente dez personagens; criações do usuário ficam no projeto dele, fora deste catálogo.
