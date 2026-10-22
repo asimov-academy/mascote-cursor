@@ -44,6 +44,22 @@ Código, arte e documentação são distribuídos com a licença do projeto.
 O exemplo `skills/mascote-cursor/references/exemplo-atlas.svg` (Bolota) foi desenhado
 em código para este projeto, como modelo do caminho em SVG. Não faz parte da coleção.
 
+## Galeria "Feito com a skill"
+
+A demonstração mostra cinco criações fora da coleção, feitas com o passo a passo de
+`criar.md` para provar que o estilo é livre. Nenhuma usou arte de terceiros como entrada.
+
+| Criação | Estilo           | Origem                                                                             |
+| ------- | ---------------- | ---------------------------------------------------------------------------------- |
+| Breu    | Minimalista      | SVG desenhado em código (`references/exemplo-minimalista.svg`), estilo de ícone.   |
+| Bolota  | Flat vetorial    | SVG desenhado em código (`references/exemplo-atlas.svg`).                          |
+| Guará   | Pixel art        | Gerado com IA (modelo GPT 2 via Magnific), fundo magenta, preparado pelo comando.  |
+| Novelo  | Crochê amigurumi | Gerado com IA (modelo GPT 2 via Magnific), fundo verde `#00ff00`, preparado igual. |
+| Tucano  | Papercraft       | Gerado com IA (modelo GPT 2 via Magnific), fundo magenta, preparado pelo comando.  |
+
+Os atlas gerados ficam em `demo/criacoes/`. Os pedidos seguiram o modelo do passo 2
+de `criar.md`, com a linha do estilo correspondente no cardápio.
+
 O [guia de criação](../skills/mascote-cursor/references/criar.md) contém um prompt
 autoral reutilizável. Gerações futuras podem variar; os arquivos versionados aqui
 são a versão pronta da coleção.

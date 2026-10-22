@@ -20,7 +20,7 @@ test("as dez artes carregam e têm transparência de verdade", async ({
   await expect
     .poll(() =>
       page
-        .locator("mascote-cursor")
+        .locator(".grade mascote-cursor")
         .evaluateAll((ms) => ms.every((m) => m.carregado)),
     )
     .toBe(true);
@@ -366,4 +366,38 @@ test("revisor prepara uma folha JPG e entrega PNG transparente", async ({
   // A base dos ombros fica a 91% da célula; logo acima dela há corpo opaco.
   const corpo = ((512 + 446) * 1536 + 256) * 4;
   expect(png.pixels[corpo + 3]).toBe(255);
+});
+
+test("galeria mostra criações em outros estilos, fora da coleção", async ({
+  page,
+}) => {
+  const erros = [];
+  page.on("pageerror", (e) => erros.push(e.message));
+  await abrir(page);
+  const galeria = page.locator("#galeria mascote-cursor");
+  // As imagens só são pedidas quando a galeria chega perto da tela.
+  await expect(galeria).toHaveCount(0);
+  await page
+    .getByRole("button", { name: "Pausar movimento", exact: true })
+    .click();
+  await page.locator("#galeria").scrollIntoViewIfNeeded();
+  await expect(galeria).toHaveCount(5);
+  await expect(page.locator(".grade mascote-cursor")).toHaveCount(10);
+  await expect
+    .poll(() => galeria.evaluateAll((ms) => ms.every((m) => m.carregado)))
+    .toBe(true);
+  await expect(page.locator("#galeria figcaption")).toContainText([
+    "Minimalista",
+    "Pixel art",
+    "Crochê amigurumi",
+    "Papercraft",
+    "Flat vetorial",
+  ]);
+  // A pausa escolhida antes de a galeria aparecer também vale para ela.
+  expect(
+    await galeria.evaluateAll((ms) =>
+      ms.every((m) => m.hasAttribute("pausado")),
+    ),
+  ).toBe(true);
+  expect(erros).toEqual([]);
 });

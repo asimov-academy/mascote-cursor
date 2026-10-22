@@ -177,27 +177,49 @@ Isso não exige migrar seu site para outra tecnologia.
 
 ## E se eu quiser um mascote só meu?
 
-O processo é curto: **crie as poses → prepare → confira e coloque no site**.
-Pode ser um personagem descrito por você ou uma arte baseada em uma referência sua.
+O processo é curto: **conte a ideia → escolha o estilo → crie as poses → prepare → confira e coloque no site**.
+
+Você pode partir de uma descrição, de uma foto (seu pet, um produto, um desenho seu)
+ou da identidade da sua marca. E o estilo não precisa ser argila: pixel art, crochê,
+papercraft, minimalista, anime, aquarela e outros estão no cardápio da skill.
+
+![Cinco mascotes em estilos diferentes: minimalista, pixel art, crochê, papercraft e flat](docs/criacoes.png)
+
+Guará, Novelo e Tucano foram gerados com IA. Breu e Bolota foram desenhados em código
+pelo próprio agente. Todos acompanham o mouse; veja na seção **Feito com a skill** da
+demonstração.
+
 Funciona com qualquer agente. Ele vê o que tem disponível e segue por um destes caminhos:
 
-| Caminho                   | Como funciona                                                                | Estilo         |
-| ------------------------- | ---------------------------------------------------------------------------- | -------------- |
-| Gerador do próprio agente | O agente gera a folha de poses direto na conversa.                           | Argila         |
-| MCP de imagem             | O agente usa um serviço conectado, como o Higgsfield, e baixa o resultado.   | Argila         |
-| Manual                    | Você cola o pedido pronto no ChatGPT, Gemini, Midjourney ou outro gerador.   | Argila         |
-| SVG                       | O agente desenha o mascote em código. Não precisa de gerador nem de crédito. | Vetorial, flat |
+| Caminho                   | Como funciona                                                                | Estilos             |
+| ------------------------- | ---------------------------------------------------------------------------- | ------------------- |
+| Gerador do próprio agente | O agente gera a folha de poses direto na conversa.                           | Qualquer um         |
+| MCP de imagem             | O agente usa um serviço conectado, como o Magnific, e baixa o resultado.     | Qualquer um         |
+| Manual                    | Você cola o pedido pronto no ChatGPT, Gemini, Midjourney ou outro gerador.   | Qualquer um         |
+| SVG                       | O agente desenha o mascote em código. Não precisa de gerador nem de crédito. | Minimalista ou flat |
 
 Se houver mais de uma opção, o agente pergunta qual você prefere. Gerar imagem pode
 ter custo no serviço que você usar; o SVG não tem.
 
-Peça ao agente:
+Peça ao agente, do seu jeito:
 
 ```text
 Use a skill mascote-cursor para criar um mascote original:
-um biscoitinho redondo com uma mordida, em estilo de argila.
+um biscoitinho redondo com uma mordida, em pixel art.
 Depois coloque ele na minha página e confira o resultado.
 ```
+
+```text
+Use a skill mascote-cursor para transformar meu cachorro em mascote,
+em estilo de crochê amigurumi. A foto está em fotos/thor.jpg.
+```
+
+```text
+Use a skill mascote-cursor para criar um mascote minimalista em SVG,
+com as cores da minha marca: preto, branco e um detalhe verde.
+```
+
+Se faltar alguma informação, o agente pergunta antes de criar.
 
 Para ajustar visualmente, com a demonstração ligada abra o
 **[revisor de poses](http://localhost:4173/demo/personalizar.html)**. Ele abre PNG, JPG,
@@ -206,9 +228,10 @@ o revisor tira o fundo, alinha as poses e entrega um PNG pronto. Sua imagem fica
 navegador, sem upload. Você pode testar fundos claro/escuro e copiar a configuração.
 
 O [guia de criação](skills/mascote-cursor/references/criar.md) explica os quatro caminhos,
-o pedido de imagem, o preparo, a transparência e o alinhamento. O
-[guia do SVG](skills/mascote-cursor/references/svg.md) traz as regras da grade e um
-[exemplo pronto](skills/mascote-cursor/references/exemplo-atlas.svg). Sua criação fica
+o briefing com referência e estilo, o pedido de imagem, o preparo, a transparência e o
+alinhamento. O [guia do SVG](skills/mascote-cursor/references/svg.md) traz as regras da
+grade e dois exemplos prontos: [flat](skills/mascote-cursor/references/exemplo-atlas.svg)
+e [minimalista](skills/mascote-cursor/references/exemplo-minimalista.svg). Sua criação fica
 no seu projeto; a coleção pronta continua com dez personagens.
 
 ## Por que é simples de replicar?
