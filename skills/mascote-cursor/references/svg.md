@@ -6,8 +6,13 @@ O resultado é **vetorial e flat**: formas lisas, cores chapadas. Não fica com 
 de argila como os dez prontos. Diga isso à pessoa antes de começar.
 
 O SVG **não passa** pelo `preparar.mjs`. Ele já sai alinhado, com fundo transparente,
-e vai direto no atributo `atlas`. Comece por [exemplo-atlas.svg](exemplo-atlas.svg):
-copie o arquivo para o projeto, troque formas e cores e mantenha a estrutura.
+e vai direto no atributo `atlas`. Comece por um dos exemplos, copie para o projeto,
+troque formas e cores e mantenha a estrutura:
+
+- [exemplo-atlas.svg](exemplo-atlas.svg) (Bolota): flat, com orelhas, focinho e bochechas.
+- [exemplo-minimalista.svg](exemplo-minimalista.svg) (Breu): cabeça lisa e olhos em
+  pílula. Sem focinho, o giro aparece nos olhos atravessando o rosto e estreitando
+  perto da borda. O contorno claro mantém o personagem escuro visível em fundo escuro.
 
 ## Regras da grade
 

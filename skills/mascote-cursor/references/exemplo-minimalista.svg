@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="2048" viewBox="0 0 1536 2048">
+  <!--
+    Breu: mascote minimalista do Mascote Cursor, desenhado em código.
+    Grade 3 × 4, células de 512 × 512, fundo transparente.
+    O giro é simulado pelos olhos atravessando o rosto e estreitando perto da borda.
+    O contorno claro mantém o personagem visível em fundos claros e escuros.
+    Cabeça em (256, 244) da célula. Base dos ombros em y = 470.
+  -->
+  <defs>
+    <path id="ombros" d="M150 470C150 412 196 380 256 380S362 412 362 470Z" fill="#2a2b30" stroke="#f5f5f7" stroke-width="6" stroke-linejoin="round" />
+    <circle id="cabeca" r="124" fill="#111214" stroke="#f5f5f7" stroke-width="6" />
+    <g id="olhos" fill="#f5f5f7">
+      <rect x="-40" y="-30" width="24" height="56" rx="12" />
+      <rect x="16" y="-30" width="24" height="56" rx="12" />
+    </g>
+    <g id="olhos-fechados" fill="#f5f5f7">
+      <rect x="-44" y="4" width="32" height="10" rx="5" />
+      <rect x="12" y="4" width="32" height="10" rx="5" />
+    </g>
+    <g id="olhos-felizes" fill="none" stroke="#f5f5f7" stroke-width="11" stroke-linecap="round">
+      <path d="M-44 8Q-28 -16 -12 8M12 8Q28 -16 44 8" />
+    </g>
+    <path id="boca" d="M-16 46Q0 70 16 46Z" fill="#f5f5f7" />
+  </defs>
+
+  <!-- 0. acima-esquerda -->
+  <g transform="translate(0 0)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(-10 -8)" />
+      <use href="#olhos" transform="translate(-54 -36) scale(0.78 0.84)" />
+    </g>
+  </g>
+  <!-- 1. acima -->
+  <g transform="translate(512 0)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(0 -8)" />
+      <use href="#olhos" transform="translate(0 -36) scale(1 0.84)" />
+    </g>
+  </g>
+  <!-- 2. acima-direita -->
+  <g transform="translate(1024 0)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(10 -8)" />
+      <use href="#olhos" transform="translate(54 -36) scale(0.78 0.84)" />
+    </g>
+  </g>
+  <!-- 3. esquerda -->
+  <g transform="translate(0 512)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(-10 0)" />
+      <use href="#olhos" transform="translate(-54 0) scale(0.78 1)" />
+    </g>
+  </g>
+  <!-- 4. frente -->
+  <g transform="translate(512 512)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(0 0)" />
+      <use href="#olhos" transform="translate(0 0)" />
+    </g>
+  </g>
+  <!-- 5. direita -->
+  <g transform="translate(1024 512)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(10 0)" />
+      <use href="#olhos" transform="translate(54 0) scale(0.78 1)" />
+    </g>
+  </g>
+  <!-- 6. abaixo-esquerda -->
+  <g transform="translate(0 1024)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(-10 8)" />
+      <use href="#olhos" transform="translate(-54 36) scale(0.78 0.84)" />
+    </g>
+  </g>
+  <!-- 7. abaixo -->
+  <g transform="translate(512 1024)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(0 8)" />
+      <use href="#olhos" transform="translate(0 36) scale(1 0.84)" />
+    </g>
+  </g>
+  <!-- 8. abaixo-direita -->
+  <g transform="translate(1024 1024)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(10 8)" />
+      <use href="#olhos" transform="translate(54 36) scale(0.78 0.84)" />
+    </g>
+  </g>
+  <!-- 9. piscar -->
+  <g transform="translate(0 1536)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(0 0)" />
+      <use href="#olhos-fechados" transform="translate(0 0)" />
+    </g>
+  </g>
+  <!-- 10. sorrir -->
+  <g transform="translate(512 1536)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(0 0)" />
+      <use href="#olhos-felizes" transform="translate(0 0)" />
+    </g>
+  </g>
+  <!-- 11. alegria -->
+  <g transform="translate(1024 1536)">
+    <use href="#ombros" />
+    <g transform="translate(256 244)">
+      <use href="#cabeca" transform="translate(0 0)" />
+      <use href="#olhos" transform="translate(0 0)" />
+      <use href="#boca" />
+    </g>
+  </g>
+</svg>

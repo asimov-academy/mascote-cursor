@@ -80,7 +80,9 @@ export function preparar(imagem, tamanho = 512, inverterLados = false) {
       throw new Error(
         `Quadro ${indice + 1} sem transparência suficiente. Gere um PNG com alpha real.`,
       );
-    if (esquerda <= x0 || direita >= x1 - 1 || topo <= y0 || base >= y1 - 1)
+    // A base pode tocar a borda: o busto termina reto nos ombros, e geradores
+    // costumam encostar esse corte no fim da imagem. Topo e laterais, não.
+    if (esquerda <= x0 || direita >= x1 - 1 || topo <= y0)
       throw new Error(
         `Quadro ${indice + 1} encosta na borda. Gere novamente com mais margem.`,
       );
@@ -209,6 +211,14 @@ export function aplicarChroma(imagem, hexadecimal) {
     if (i >= largura) incluir(i - largura);
     if (i < total - largura) incluir(i + largura);
   }
+  // Bolsões de fundo presos entre pelos, penas ou dobras não tocam a borda.
+  // Remova também os que têm quase exatamente a cor de fundo.
+  for (let i = 0; i < total; i++)
+    if (
+      !visitados[i] &&
+      Math.max(...fundo.map((cor, c) => Math.abs(cor - pixels[i * 4 + c]))) < 40
+    )
+      visitados[i] = 1;
   if (fim < total * 0.08)
     throw new Error(
       "O fundo não corresponde à cor informada ou não chega às bordas.",

@@ -48,5 +48,28 @@ test("preparação remove fundo, preserva cor interior e alinha doze quadros", (
   assert.equal(invertido.pixels[(22 * 120 + 20) * 4], 140);
   assert.equal(invertido.pixels[((120 + 22) * 120 + 20) * 4], 40);
   assert.throws(() => preparar(fonte()), /sobrepõem/);
+  // Ombros cortados na borda de baixo são aceitos e alinhados pela base.
+  const cortada = fonte();
+  for (let x = 0; x < 120; x++)
+    for (let y = 152; y < 160; y++)
+      if (x % 40 > 8 && x % 40 < 31)
+        cortada.pixels.set([40, 140, 30, 255], (y * 120 + x) * 4);
+  const base = preparar(aplicarChroma(cortada, "#ff00ff"), 40).imagem;
+  assert.equal(base.pixels[((120 + 35) * 120 + 20) * 4 + 3], 255);
+  // Uma pose que encosta no topo continua recusada.
+  const topo = fonte();
+  for (let y = 0; y < 9; y++)
+    topo.pixels.set([40, 140, 30, 255], (y * 120 + 20) * 4);
+  assert.throws(
+    () => preparar(aplicarChroma(topo, "#ff00ff"), 40),
+    /encosta na borda/,
+  );
   assert.throws(() => aplicarChroma(fonte(), "#000000"), /fundo/);
+  // Um bolsão de fundo cercado pelo personagem também fica transparente.
+  const bolsao = fonte();
+  bolsao.pixels.set([255, 0, 255, 255], (20 * 120 + 20) * 4);
+  assert.equal(
+    aplicarChroma(bolsao, "#ff00ff").pixels[(20 * 120 + 20) * 4 + 3],
+    0,
+  );
 });
