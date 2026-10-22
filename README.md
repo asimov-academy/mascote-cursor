@@ -88,21 +88,22 @@ O agente faz a mudança no projeto. O mascote continua sendo seu para editar.
 
 ## Conheça a turma
 
-São **exatamente dez** personagens prontos, com direção visual de pequenas miniaturas
-de argila e personalidades próprias.
+São **exatamente dez** personagens prontos, em **seis estilos** diferentes: argila,
+pixel art, minimalista, crochê, papercraft e flat. A mistura é de propósito: mostra que
+o seu mascote pode ter a cara que você quiser.
 
-| Mascote    | Quem é             | Seu jeito                                 | Nome no código |
-| ---------- | ------------------ | ----------------------------------------- | -------------- |
-| **Capi**   | Capivara           | Calma de quem já salvou o arquivo.        | `capi`         |
-| **Pingo**  | Gotinha            | Uma boa ideia sempre puxa outra.          | `pingo`        |
-| **Broto**  | Plantinha          | Pequenos começos, grandes possibilidades. | `broto`        |
-| **Faísca** | Chaminha           | A energia de tirar uma ideia do papel.    | `faisca`       |
-| **Lume**   | Mariposinha        | Curiosidade acesa até de madrugada.       | `lume`         |
-| **Caju**   | Cajuzinho          | Um jeitinho brasileiro de ser diferente.  | `caju`         |
-| **Bento**  | Vira-lata caramelo | Seu próximo projeto ganhou companhia.     | `bento`        |
-| **Nimbo**  | Nuvem              | Cabeça nas nuvens. Ideias também.         | `nimbo`        |
-| **Tico**   | Robozinho          | Um pouco de lógica, um tanto de afeto.    | `tico`         |
-| **Grão**   | Grão de café       | Companheiro oficial do só mais um ajuste. | `grao`         |
+| Mascote    | Quem é              | Estilo      | Seu jeito                                | Nome no código |
+| ---------- | ------------------- | ----------- | ---------------------------------------- | -------------- |
+| **Capi**   | Capivara            | Argila      | Calma de quem já salvou o arquivo.       | `capi`         |
+| **Guará**  | Lobo-guará          | Pixel art   | Pixel por pixel, ele chega lá.           | `guara`        |
+| **Breu**   | Bolinha minimalista | Minimalista | Fala pouco e repara em tudo.             | `breu`         |
+| **Novelo** | Ovelhinha de crochê | Crochê      | Paciência de quem faz ponto por ponto.   | `novelo`       |
+| **Lume**   | Mariposinha         | Argila      | Curiosidade acesa até de madrugada.      | `lume`         |
+| **Caju**   | Cajuzinho           | Argila      | Um jeitinho brasileiro de ser diferente. | `caju`         |
+| **Tucano** | Tucano de papel     | Papercraft  | Bico grande, ideia maior ainda.          | `tucano`       |
+| **Bento**  | Vira-lata caramelo  | Argila      | Seu próximo projeto ganhou companhia.    | `bento`        |
+| **Bolota** | Ursinho             | Flat        | Fofura sem complicação.                  | `bolota`       |
+| **Tico**   | Robozinho           | Argila      | Um pouco de lógica, um tanto de afeto.   | `tico`         |
 
 Cada personagem já vem com **nove direções da cabeça e três expressões**, reunidas
 em um único PNG de alta resolução. O componente mostra a pose certa conforme a posição do mouse.
@@ -183,11 +184,8 @@ Você pode partir de uma descrição, de uma foto (seu pet, um produto, um desen
 ou da identidade da sua marca. E o estilo não precisa ser argila: pixel art, crochê,
 papercraft, minimalista, anime, aquarela e outros estão no cardápio da skill.
 
-![Cinco mascotes em estilos diferentes: minimalista, pixel art, crochê, papercraft e flat](docs/criacoes.png)
-
-Guará, Novelo e Tucano foram gerados com IA. Breu e Bolota foram desenhados em código
-pelo próprio agente. Todos acompanham o mouse; veja na seção **Feito com a skill** da
-demonstração.
+A própria coleção foi feita assim: Guará, Novelo e Tucano foram gerados com IA seguindo
+o passo a passo da skill, e Breu e Bolota foram desenhados em código pelo agente.
 
 Funciona com qualquer agente. Ele vê o que tem disponível e segue por um destes caminhos:
 
@@ -245,7 +243,11 @@ no seu projeto; a coleção pronta continua com dez personagens.
 A cabeça muda de perspectiva com poses desenhadas. O motor escolhe uma das nove
 direções e evita tremor perto das fronteiras entre elas. Não é um modelo 3D contínuo.
 
-**Já usava a versão 1?** Os nomes prontos continuam iguais. Atualize motor e PNGs juntos.
+**Usava Pingo, Broto, Faísca, Nimbo ou Grão?** Eles saíram na versão 3 para dar lugar aos
+novos estilos. Troque o `mascote` por outro da turma, ou copie o PNG antigo do histórico
+do Git e use com `atlas`.
+
+**Já usava a versão 1?** Atualize motor e PNGs juntos.
 Artes próprias com `imagem` + `olhos` precisam virar uma folha de poses com `atlas`.
 Veja a [migração](skills/mascote-cursor/references/criar.md#migração-da-versão-1).
 

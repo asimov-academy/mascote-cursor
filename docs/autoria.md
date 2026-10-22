@@ -13,52 +13,40 @@ de um personagem reagindo ao ponteiro foi estudado a partir do
 - Demonstração e revisor de poses e preparador de atlas.
 - Direção visual, nomes, descrições e dez artes desta coleção.
 
-As imagens foram **geradas com IA para este projeto**, a partir de descrições
-próprias, sem usar imagens do repositório de referência como entrada. Não são
-ilustrações feitas à mão. O estilo pedido foi uma coleção de miniaturas de argila
-fosca, formas arredondadas e identidade própria. Na versão 2, as bases autorais foram
-usadas como referência para novas folhas com rosto completo, nove direções da cabeça
-e três expressões. O tigre da referência não foi usado como entrada de geração.
+A coleção mistura seis estilos de propósito: mostra que um mascote próprio pode ter
+qualquer cara. Oito personagens foram **gerados com IA para este projeto**, a partir de
+descrições próprias, sem usar imagens do repositório de referência como entrada. Dois
+foram **desenhados em código** pelo agente, em SVG. Nenhum usou arte de terceiros.
 
-As folhas-fonte estão em `arte/fontes/`. O preparador próprio remove o fundo magenta,
-recorta as células, normaliza a escala e alinha a base dos ombros. A saída é um PNG
-transparente de 1536 × 2048 por personagem. Broto teve as colunas direcionais invertidas
-para corresponder aos lados do observador. As poses foram conferidas visualmente.
-Código, arte e documentação são distribuídos com a licença do projeto.
+Os cinco de argila (Capi, Lume, Caju, Bento e Tico) vêm das bases autorais da versão 1,
+usadas como referência para novas folhas com rosto completo, nove direções da cabeça e
+três expressões. O tigre da referência não foi usado como entrada de geração. Guará,
+Novelo e Tucano foram gerados na versão 3 com o passo a passo de `criar.md`, usando o
+modelo GPT 2 pelo MCP do Magnific e a linha de estilo do cardápio. Breu e Bolota são os
+exemplos de SVG da skill, exportados para PNG pelo revisor de poses.
+
+As folhas-fonte geradas estão em `arte/fontes/`. O preparador próprio remove o fundo
+(magenta, ou verde no Novelo), recorta as células, normaliza a escala e alinha a base dos
+ombros. A saída é um PNG transparente de 1536 × 2048 por personagem. As poses foram
+conferidas visualmente. Código, arte e documentação são distribuídos com a licença do projeto.
 
 ## Registro da direção de arte
 
-| Arquivo      | Descrição criada para a geração                                                    |
-| ------------ | ---------------------------------------------------------------------------------- |
-| `capi.png`   | Capivara cor de canela, focinho largo, orelhas pequenas e lenço verde-petróleo.    |
-| `pingo.png`  | Gota azul-céu, ponta inclinada, busto com pequena base frontal.                    |
-| `broto.png`  | Criatura verde-sálvia com duas folhas largas, corpo de semente e sorriso delicado. |
-| `faisca.png` | Chama dourada com três pontas alaranjadas suaves e busto pequeno.                  |
-| `lume.png`   | Mariposa lavanda e ameixa, antenas curvas e asas com detalhes de lua em pêssego.   |
-| `caju.png`   | Caju dourado-alaranjado com castanha bordô, folha verde-petróleo e busto dourado.  |
-| `bento.png`  | Cachorrinho caramelo, orelhas caídas, focinho claro e coleira turquesa.            |
-| `nimbo.png`  | Nuvem marfim de contorno macio, pequeno busto lavanda.                             |
-| `tico.png`   | Robô turquesa arredondado, placa facial marfim e antena laranja.                   |
-| `grao.png`   | Grão de café castanho, sulco lateral curvo e pequeno lenço creme.                  |
+| Arquivo      | Estilo      | Descrição criada para a geração ou o desenho                                          |
+| ------------ | ----------- | ------------------------------------------------------------------------------------- |
+| `capi.png`   | Argila      | Capivara cor de canela, focinho largo, orelhas pequenas e lenço verde-petróleo.       |
+| `guara.png`  | Pixel art   | Filhote de lobo-guará laranja-avermelhado, orelhas grandes, focinho e crina pretos.   |
+| `breu.png`   | Minimalista | Cabeça redonda quase preta, olhos em pílula e contorno claro. SVG em código.          |
+| `novelo.png` | Crochê      | Ovelhinha de lã branca, rosto cinza-escuro, orelhas rosadas e cachecol mostarda.      |
+| `lume.png`   | Argila      | Mariposa lavanda e ameixa, antenas curvas e asas com detalhes de lua em pêssego.      |
+| `caju.png`   | Argila      | Caju dourado-alaranjado com castanha bordô, folha verde-petróleo e busto dourado.     |
+| `tucano.png` | Papercraft  | Tucano de papel, bico laranja e amarelo de ponta preta, peito branco, olhos azuis.    |
+| `bento.png`  | Argila      | Cachorrinho caramelo, orelhas caídas, focinho claro e coleira turquesa.               |
+| `bolota.png` | Flat        | Ursinha laranja com focinho creme, bochechas rosadas e lenço turquesa. SVG em código. |
+| `tico.png`   | Argila      | Robô turquesa arredondado, placa facial marfim e antena laranja.                      |
 
-O exemplo `skills/mascote-cursor/references/exemplo-atlas.svg` (Bolota) foi desenhado
-em código para este projeto, como modelo do caminho em SVG. Não faz parte da coleção.
-
-## Galeria "Feito com a skill"
-
-A demonstração mostra cinco criações fora da coleção, feitas com o passo a passo de
-`criar.md` para provar que o estilo é livre. Nenhuma usou arte de terceiros como entrada.
-
-| Criação | Estilo           | Origem                                                                             |
-| ------- | ---------------- | ---------------------------------------------------------------------------------- |
-| Breu    | Minimalista      | SVG desenhado em código (`references/exemplo-minimalista.svg`), estilo de ícone.   |
-| Bolota  | Flat vetorial    | SVG desenhado em código (`references/exemplo-atlas.svg`).                          |
-| Guará   | Pixel art        | Gerado com IA (modelo GPT 2 via Magnific), fundo magenta, preparado pelo comando.  |
-| Novelo  | Crochê amigurumi | Gerado com IA (modelo GPT 2 via Magnific), fundo verde `#00ff00`, preparado igual. |
-| Tucano  | Papercraft       | Gerado com IA (modelo GPT 2 via Magnific), fundo magenta, preparado pelo comando.  |
-
-Os atlas gerados ficam em `demo/criacoes/`. Os pedidos seguiram o modelo do passo 2
-de `criar.md`, com a linha do estilo correspondente no cardápio.
+Pingo, Broto, Faísca, Nimbo e Grão fizeram parte das versões 1 e 2. Saíram na versão 3
+para abrir espaço aos novos estilos e continuam disponíveis no histórico do Git.
 
 O [guia de criação](../skills/mascote-cursor/references/criar.md) contém um prompt
 autoral reutilizável. Gerações futuras podem variar; os arquivos versionados aqui

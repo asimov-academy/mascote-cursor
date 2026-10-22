@@ -20,8 +20,8 @@ quem não programa. Não transforme o fluxo padrão em uma cadeia de geração d
 
 1. Preserve a quantidade de dez mascotes prontos. Personagens de usuários entram via
    `atlas`, não por expansão do catálogo oficial.
-   Criações de exemplo em outros estilos ficam em `demo/criacoes/` e `demo/criacoes.js`,
-   fora do catálogo. Elas existem para mostrar que o estilo é livre.
+   A coleção mistura estilos de propósito (argila, pixel art, minimalista, crochê,
+   papercraft e flat). Preserve essa variedade ao trocar personagens.
 2. Não use código, prompts, textos ou imagens da referência. A inspiração conceitual
    está documentada em `docs/processo.md`; não há dependência dela.
 3. Não duplique o motor em `src/`, `dist/` ou na demonstração. Todos usam a fonte na skill.

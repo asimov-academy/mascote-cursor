@@ -59,7 +59,7 @@ try {
       json
         ? JSON.stringify({ mascotes })
         : mascotes
-            .map((m) => `${m.id.padEnd(9)} ${m.nome} — ${m.especie}`)
+            .map((m) => `${m.id.padEnd(9)} ${m.nome} — ${m.especie} (${m.estilo})`)
             .join("\n"),
     );
     process.exit(0);

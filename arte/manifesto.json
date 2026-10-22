@@ -5,18 +5,13 @@
     "inverterLados": false
   },
   {
-    "id": "pingo",
+    "id": "guara",
     "fundo": "#ff00ff",
     "inverterLados": false
   },
   {
-    "id": "broto",
-    "fundo": "#ff00ff",
-    "inverterLados": true
-  },
-  {
-    "id": "faisca",
-    "fundo": "#ff00ff",
+    "id": "novelo",
+    "fundo": "#00ff00",
     "inverterLados": false
   },
   {
@@ -30,22 +25,17 @@
     "inverterLados": false
   },
   {
+    "id": "tucano",
+    "fundo": "#ff00ff",
+    "inverterLados": false
+  },
+  {
     "id": "bento",
     "fundo": "#ff00ff",
     "inverterLados": false
   },
   {
-    "id": "nimbo",
-    "fundo": "#ff00ff",
-    "inverterLados": false
-  },
-  {
     "id": "tico",
-    "fundo": "#ff00ff",
-    "inverterLados": false
-  },
-  {
-    "id": "grao",
     "fundo": "#ff00ff",
     "inverterLados": false
   }

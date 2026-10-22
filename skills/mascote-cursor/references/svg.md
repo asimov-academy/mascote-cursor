@@ -14,6 +14,8 @@ troque formas e cores e mantenha a estrutura:
   pílula. Sem focinho, o giro aparece nos olhos atravessando o rosto e estreitando
   perto da borda. O contorno claro mantém o personagem escuro visível em fundo escuro.
 
+Os dois também estão na coleção, já em PNG, como `bolota` e `breu`.
+
 ## Regras da grade
 
 - Raiz com `width="1536" height="2048" viewBox="0 0 1536 2048"`. Sem `width` e

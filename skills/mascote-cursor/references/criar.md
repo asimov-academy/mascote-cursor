@@ -79,7 +79,7 @@ pessoa anexar na rota c. Descreva a referência também em palavras: alguns gera
 ignoram parte da imagem.
 
 **Como ele vai parecer.** Ofereça o cardápio abaixo ou use o estilo da referência.
-Sem preferência, use argila, o estilo da coleção. Copie a linha do estilo para o pedido.
+Sem preferência, use argila, o estilo mais comum da coleção. Copie a linha do estilo para o pedido.
 
 | Estilo           | Linha para o pedido                                                                                                                                                                                                   | Cuidado                                                                       |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
@@ -93,8 +93,9 @@ Sem preferência, use argila, o estilo da coleção. Copie a linha do estilo par
 | Aquarela         | ilustração em aquarela com contorno de nanquim fechado, manchas de tinta só dentro do contorno                                                                                                                        | Borda difusa deixa resto de fundo: peça contorno fechado.                     |
 | 3D de animação   | personagem 3D de animação, materiais macios, iluminação de estúdio suave                                                                                                                                              | —                                                                             |
 
-A demonstração do repositório tem uma galeria, **Feito com a skill**, com exemplos de
-pixel art, crochê, papercraft, minimalista e flat feitos com este passo a passo.
+A própria coleção mostra o cardápio: Guará (pixel art), Novelo (crochê) e Tucano
+(papercraft) foram gerados com este passo a passo; Breu (minimalista) e Bolota (flat)
+foram desenhados em SVG.
 
 ## 2. Gere a folha (caminhos a, b e c)
 
