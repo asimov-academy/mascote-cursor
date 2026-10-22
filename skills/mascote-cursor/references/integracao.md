@@ -96,7 +96,7 @@ Não carregue recursos do DOM durante SSR.
 | `tamanho` | `160`                   | Largura em pixels, de 48 a 800. Altura proporcional.                        |
 | `rotulo`  | Fazer carinho em + nome | Nome acessível do botão.                                                    |
 | `pausado` | ausente                 | Presença pausa acompanhamento; o carinho continua disponível sem transição. |
-| `atlas`   | ausente                 | URL de uma folha própria, 3 colunas × 4 linhas.                             |
+| `atlas`   | ausente                 | URL de uma folha própria em PNG ou SVG, 3 colunas × 4 linhas.               |
 | `quadro`  | ausente                 | Fixa uma pose de 0 a 11 para revisão, desativando o acompanhamento.         |
 
 `pausado="false"` também pausa: atributos booleanos dependem da presença. Remova-o
@@ -120,7 +120,7 @@ Uma imagem ou configuração inválida exibe texto e desabilita o botão até co
 2. Confira `catalogo.js`, `movimento.js` e `mascotes/<nome>.png` ao lado do módulo.
 3. Confira erros no console, prefixo público, maiúsculas e extensões.
 4. Com touch ou preferência por movimento reduzido, não seguir o cursor é intencional.
-5. Para arte própria, use um atlas 3 × 4 com rosto completo. `imagem` e `olhos` pertencem à versão 1; veja a migração no guia de criação.
+5. Para arte própria, use um atlas 3 × 4 com rosto completo. Em SVG, a raiz precisa de `width="1536" height="2048"`. `imagem` e `olhos` pertencem à versão 1; veja a migração no guia de criação.
 
 Navegadores modernos com Custom Elements e Shadow DOM são necessários.
 O componente injeta CSS em seu Shadow DOM; sites com CSP que proíbe estilos inline

@@ -32,7 +32,7 @@ a setinha do sistema.
 ## Comece por aqui
 
 **Você já tem um projeto aberto em um assistente de programação, como Cursor,
-Claude Code ou Codex? Este é o caminho mais fácil.**
+Claude Code, Codex ou outro? Este é o caminho mais fácil.**
 
 Uma _skill_ é um pequeno manual que ensina seu assistente a fazer uma tarefa. Esta
 já inclui os personagens, o código e as instruções para integrar tudo no seu site.
@@ -173,13 +173,23 @@ Isso não exige migrar seu site para outra tecnologia.
 | Nome acessível | Use `rotulo="Fazer carinho em Bento"`.                           |
 | Movimento      | Adicione `pausado`; remova o atributo para retomar.              |
 | Posição        | Coloque a tag no layout desejado. Ela não flutua sobre a página. |
-| Arte própria   | Use `atlas`, como no guia abaixo.                                |
+| Arte própria   | Use `atlas` com um PNG ou SVG, como no guia abaixo.              |
 
 ## E se eu quiser um mascote só meu?
 
-O processo é curto: **gere as poses → prepare com um comando → confira e coloque no site**.
+O processo é curto: **crie as poses → prepare → confira e coloque no site**.
 Pode ser um personagem descrito por você ou uma arte baseada em uma referência sua.
-Criar uma imagem nova depende da ferramenta de geração que você tiver disponível.
+Funciona com qualquer agente. Ele vê o que tem disponível e segue por um destes caminhos:
+
+| Caminho                   | Como funciona                                                                | Estilo         |
+| ------------------------- | ---------------------------------------------------------------------------- | -------------- |
+| Gerador do próprio agente | O agente gera a folha de poses direto na conversa.                           | Argila         |
+| MCP de imagem             | O agente usa um serviço conectado, como o Higgsfield, e baixa o resultado.   | Argila         |
+| Manual                    | Você cola o pedido pronto no ChatGPT, Gemini, Midjourney ou outro gerador.   | Argila         |
+| SVG                       | O agente desenha o mascote em código. Não precisa de gerador nem de crédito. | Vetorial, flat |
+
+Se houver mais de uma opção, o agente pergunta qual você prefere. Gerar imagem pode
+ter custo no serviço que você usar; o SVG não tem.
 
 Peça ao agente:
 
@@ -190,12 +200,16 @@ Depois coloque ele na minha página e confira o resultado.
 ```
 
 Para ajustar visualmente, com a demonstração ligada abra o
-**[revisor de poses](http://localhost:4173/demo/personalizar.html)**. Sua imagem fica
-no navegador, sem upload. Você pode testar fundos claro/escuro e copiar a configuração.
+**[revisor de poses](http://localhost:4173/demo/personalizar.html)**. Ele abre PNG, JPG,
+WebP e SVG. Se a imagem veio com fundo colorido ou em JPG/WebP, use **Preparar folha**:
+o revisor tira o fundo, alinha as poses e entrega um PNG pronto. Sua imagem fica no
+navegador, sem upload. Você pode testar fundos claro/escuro e copiar a configuração.
 
-O [guia de criação](skills/mascote-cursor/references/criar.md) explica o pedido de imagem,
-o comando de preparação, a transparência e o alinhamento. Sua criação fica no seu projeto; a coleção pronta continua
-com dez personagens.
+O [guia de criação](skills/mascote-cursor/references/criar.md) explica os quatro caminhos,
+o pedido de imagem, o preparo, a transparência e o alinhamento. O
+[guia do SVG](skills/mascote-cursor/references/svg.md) traz as regras da grade e um
+[exemplo pronto](skills/mascote-cursor/references/exemplo-atlas.svg). Sua criação fica
+no seu projeto; a coleção pronta continua com dez personagens.
 
 ## Por que é simples de replicar?
 
@@ -218,7 +232,8 @@ Veja a [migração](skills/mascote-cursor/references/criar.md#migração-da-vers
 usada em assistentes compatíveis, e o componente funciona no navegador.
 
 **Preciso pagar por imagens?** Para os dez prontos, não há geração nem API.
-O assistente de programação e a geração de personagens novos podem ter seus próprios custos.
+Para um personagem novo, o caminho em SVG também não gera imagem. Os outros caminhos
+dependem do gerador que você usar, que pode ter custo próprio.
 
 **Funciona no celular?** Sim: o toque faz carinho. Acompanhamento do mouse é ativado
 somente com ponteiro preciso e sem preferência por movimento reduzido.

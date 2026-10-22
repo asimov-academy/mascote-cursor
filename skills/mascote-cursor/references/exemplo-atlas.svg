@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="2048" viewBox="0 0 1536 2048">
+  <!--
+    Exemplo de atlas em SVG para o Mascote Cursor: a Bolota.
+    Grade 3 × 4, células de 512 × 512, fundo transparente.
+    As peças ficam em <defs>; cada célula só muda deslocamento e escala do rosto.
+    Cabeça em (256, 250) da célula. Base dos ombros em y = 470.
+  -->
+  <defs>
+    <g id="ombros">
+      <path d="M132 470C132 402 184 362 256 362S380 402 380 470Z" fill="#f4a259" />
+      <path d="M200 470C200 430 224 404 256 404S312 430 312 470Z" fill="#fde8c8" />
+    </g>
+    <g id="lenco">
+      <path d="M170 368Q256 404 342 368L350 394Q256 436 162 394Z" fill="#2a9d8f" />
+    </g>
+    <g id="orelhas">
+      <circle cx="-80" cy="-86" r="38" fill="#e07a3f" />
+      <circle cx="80" cy="-86" r="38" fill="#e07a3f" />
+      <circle cx="-80" cy="-86" r="19" fill="#f6c1a6" />
+      <circle cx="80" cy="-86" r="19" fill="#f6c1a6" />
+    </g>
+    <circle id="cabeca" r="118" fill="#f4a259" />
+    <g id="olhos">
+      <ellipse cx="-42" cy="-12" rx="15" ry="19" fill="#2b2321" />
+      <ellipse cx="42" cy="-12" rx="15" ry="19" fill="#2b2321" />
+      <circle cx="-37" cy="-19" r="5" fill="#fff" />
+      <circle cx="47" cy="-19" r="5" fill="#fff" />
+      <ellipse cx="-72" cy="22" rx="16" ry="10" fill="#ef7d6d" opacity=".6" />
+      <ellipse cx="72" cy="22" rx="16" ry="10" fill="#ef7d6d" opacity=".6" />
+    </g>
+    <g id="olhos-fechados" fill="none" stroke="#2b2321" stroke-width="6" stroke-linecap="round">
+      <path d="M-56 -10Q-42 0 -28 -10M28 -10Q42 0 56 -10" />
+      <ellipse cx="-72" cy="22" rx="16" ry="10" fill="#ef7d6d" stroke="none" opacity=".6" />
+      <ellipse cx="72" cy="22" rx="16" ry="10" fill="#ef7d6d" stroke="none" opacity=".6" />
+    </g>
+    <g id="olhos-felizes" fill="none" stroke="#2b2321" stroke-width="6" stroke-linecap="round">
+      <path d="M-56 -6Q-42 -24 -28 -6M28 -6Q42 -24 56 -6" />
+      <ellipse cx="-72" cy="22" rx="18" ry="11" fill="#ef7d6d" stroke="none" opacity=".75" />
+      <ellipse cx="72" cy="22" rx="18" ry="11" fill="#ef7d6d" stroke="none" opacity=".75" />
+    </g>
+    <g id="focinho">
+      <ellipse cy="28" rx="40" ry="28" fill="#fde8c8" />
+      <ellipse cy="15" rx="11" ry="8" fill="#2b2321" />
+    </g>
+    <path id="boca" d="M-14 32Q-7 42 0 34Q7 42 14 32" fill="none" stroke="#2b2321" stroke-width="4" stroke-linecap="round" />
+    <g id="boca-aberta">
+      <path d="M-16 30Q0 62 16 30Z" fill="#2b2321" />
+      <path d="M-8 44Q0 38 8 44Q4 52 0 52Q-4 52 -8 44Z" fill="#ef7d6d" />
+    </g>
+  </defs>
+
+  <!-- 0. acima-esquerda -->
+  <g transform="translate(0 0)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(-6 -2)" />
+      <use href="#cabeca" transform="translate(-16 -10)" />
+      <use href="#olhos" transform="translate(-48 -30) scale(0.86 0.9)" />
+      <use href="#focinho" transform="translate(-62 -38) scale(0.86 0.9)" />
+      <use href="#boca" transform="translate(-62 -38) scale(0.86 0.9)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 1. acima -->
+  <g transform="translate(512 0)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(0 -2)" />
+      <use href="#cabeca" transform="translate(0 -10)" />
+      <use href="#olhos" transform="translate(0 -30) scale(1 0.9)" />
+      <use href="#focinho" transform="translate(0 -38) scale(1 0.9)" />
+      <use href="#boca" transform="translate(0 -38) scale(1 0.9)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 2. acima-direita -->
+  <g transform="translate(1024 0)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(6 -2)" />
+      <use href="#cabeca" transform="translate(16 -10)" />
+      <use href="#olhos" transform="translate(48 -30) scale(0.86 0.9)" />
+      <use href="#focinho" transform="translate(62 -38) scale(0.86 0.9)" />
+      <use href="#boca" transform="translate(62 -38) scale(0.86 0.9)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 3. esquerda -->
+  <g transform="translate(0 512)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(-6 0)" />
+      <use href="#cabeca" transform="translate(-16 0)" />
+      <use href="#olhos" transform="translate(-48 0) scale(0.86 1)" />
+      <use href="#focinho" transform="translate(-62 0) scale(0.86 1)" />
+      <use href="#boca" transform="translate(-62 0) scale(0.86 1)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 4. frente -->
+  <g transform="translate(512 512)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(0 0)" />
+      <use href="#cabeca" transform="translate(0 0)" />
+      <use href="#olhos" transform="translate(0 0)" />
+      <use href="#focinho" transform="translate(0 0)" />
+      <use href="#boca" transform="translate(0 0)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 5. direita -->
+  <g transform="translate(1024 512)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(6 0)" />
+      <use href="#cabeca" transform="translate(16 0)" />
+      <use href="#olhos" transform="translate(48 0) scale(0.86 1)" />
+      <use href="#focinho" transform="translate(62 0) scale(0.86 1)" />
+      <use href="#boca" transform="translate(62 0) scale(0.86 1)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 6. abaixo-esquerda -->
+  <g transform="translate(0 1024)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(-6 2)" />
+      <use href="#cabeca" transform="translate(-16 10)" />
+      <use href="#olhos" transform="translate(-48 30) scale(0.86 0.9)" />
+      <use href="#focinho" transform="translate(-62 38) scale(0.86 0.9)" />
+      <use href="#boca" transform="translate(-62 38) scale(0.86 0.9)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 7. abaixo -->
+  <g transform="translate(512 1024)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(0 2)" />
+      <use href="#cabeca" transform="translate(0 10)" />
+      <use href="#olhos" transform="translate(0 30) scale(1 0.9)" />
+      <use href="#focinho" transform="translate(0 38) scale(1 0.9)" />
+      <use href="#boca" transform="translate(0 38) scale(1 0.9)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 8. abaixo-direita -->
+  <g transform="translate(1024 1024)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(6 2)" />
+      <use href="#cabeca" transform="translate(16 10)" />
+      <use href="#olhos" transform="translate(48 30) scale(0.86 0.9)" />
+      <use href="#focinho" transform="translate(62 38) scale(0.86 0.9)" />
+      <use href="#boca" transform="translate(62 38) scale(0.86 0.9)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 9. piscar -->
+  <g transform="translate(0 1536)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(0 0)" />
+      <use href="#cabeca" transform="translate(0 0)" />
+      <use href="#olhos-fechados" transform="translate(0 0)" />
+      <use href="#focinho" transform="translate(0 0)" />
+      <use href="#boca" transform="translate(0 0)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 10. sorrir -->
+  <g transform="translate(512 1536)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(0 0)" />
+      <use href="#cabeca" transform="translate(0 0)" />
+      <use href="#olhos-felizes" transform="translate(0 0)" />
+      <use href="#focinho" transform="translate(0 0)" />
+      <use href="#boca" transform="translate(0 0)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+  <!-- 11. alegria -->
+  <g transform="translate(1024 1536)">
+    <use href="#ombros" />
+    <g transform="translate(256 250)">
+      <use href="#orelhas" transform="translate(0 0)" />
+      <use href="#cabeca" transform="translate(0 0)" />
+      <use href="#olhos" transform="translate(0 0)" />
+      <use href="#focinho" transform="translate(0 0)" />
+      <use href="#boca-aberta" transform="translate(0 0)" />
+    </g>
+    <use href="#lenco" />
+  </g>
+</svg>

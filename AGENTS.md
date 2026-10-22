@@ -9,6 +9,8 @@ quem não programa. Não transforme o fluxo padrão em uma cadeia de geração d
 - `skills/mascote-cursor/SKILL.md`: contrato de execução para agentes consumidores.
 - `skills/mascote-cursor/assets/`: fonte canônica do motor, catálogo e artes.
 - `skills/mascote-cursor/scripts/instalar.mjs`: instalador local, sem rede.
+- `skills/mascote-cursor/scripts/atlas.js`: preparo de folhas próprias, sem Node,
+  usado por `preparar.mjs` e pelo revisor em `assets/editor/`.
 - `skills/mascote-cursor/references/`: integração e criação personalizada.
 - `index.html` e `demo/`: demonstração pública em português.
 - `docs/`: explicação do processo, autoria e contribuição.
@@ -21,6 +23,7 @@ quem não programa. Não transforme o fluxo padrão em uma cadeia de geração d
 2. Não use código, prompts, textos ou imagens da referência. A inspiração conceitual
    está documentada em `docs/processo.md`; não há dependência dela.
 3. Não duplique o motor em `src/`, `dist/` ou na demonstração. Todos usam a fonte na skill.
+   O mesmo vale para o preparo: comando e revisor importam `scripts/atlas.js`.
 4. Interface, documentação, mensagens de erro e comentários novos ficam em português.
    Nomes exigidos por ferramentas, como `SKILL.md` e `package.json`, permanecem como são.
 5. Não sobrescreva arquivos divergentes na instalação. Verifique conflitos antes de copiar.

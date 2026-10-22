@@ -158,3 +158,45 @@ pre {
   background: #365b43;
   color: white;
 }
+
+fieldset {
+  border: 1px solid #c0c8b7;
+  border-radius: 7px;
+  margin: 14px 0 0;
+  padding: 4px 14px 14px;
+}
+fieldset:disabled {
+  opacity: 0.55;
+}
+legend {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 0 6px;
+}
+label.opcao {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 6px 0;
+}
+label.opcao input {
+  display: inline;
+  width: auto;
+  margin: 0;
+}
+fieldset .acoes {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.botao {
+  border: 1px solid #365b43;
+  border-radius: 6px;
+  background: #365b43;
+  color: white;
+  padding: 10px 13px;
+  font: 12px Arial;
+  text-decoration: none;
+}
+.botao[hidden] {
+  display: none;
+}

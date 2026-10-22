@@ -34,12 +34,41 @@
       <section class="controles" aria-label="Revisão das poses">
         <label class="arquivo"
           >1. Escolha sua folha de poses
-          <input id="arquivo" type="file" accept="image/png"
+          <input
+            id="arquivo"
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/svg+xml"
         /></label>
         <p id="status" role="status">
-          Comece com a Capi de exemplo ou abra um atlas PNG transparente em
-          grade 3 × 4.
+          Comece com a Capi de exemplo ou abra uma folha em grade 3 × 4: PNG,
+          JPG, WebP ou SVG.
         </p>
+        <fieldset id="preparo" disabled>
+          <legend>Precisa preparar?</legend>
+          <p>
+            Use quando a folha veio com fundo colorido ou em JPG/WebP. O revisor
+            remove o fundo, alinha os ombros e gera um PNG transparente de 1536
+            × 2048. SVG desenhado no padrão não precisa deste passo; use só se
+            quiser o mesmo mascote em PNG.
+          </p>
+          <label
+            >Cor do fundo<input id="cor" value="#ff00ff" spellcheck="false"
+          /></label>
+          <label class="opcao"
+            ><input id="transparente" type="checkbox" /> O fundo já é
+            transparente</label
+          >
+          <label class="opcao"
+            ><input id="inverter" type="checkbox" /> Inverter esquerda e
+            direita</label
+          >
+          <div class="acoes">
+            <button id="preparar" type="button">Preparar folha</button
+            ><a id="baixar" class="botao" hidden download="meu-personagem.png"
+              >Baixar PNG preparado</a
+            >
+          </div>
+        </fieldset>
         <h2>2. Confira cada direção</h2>
         <p>
           Esquerda e direita são os lados de quem olha para a tela. O corpo deve
@@ -63,8 +92,8 @@
           Copiar configuração
         </button>
         <p>
-          O botão copia o HTML. Salve sua imagem no projeto e carregue o módulo
-          <code>mascote.js</code> para ativá-lo.
+          O botão copia o HTML. Salve sua imagem (PNG preparado ou SVG) no
+          projeto e carregue o módulo <code>mascote.js</code> para ativá-lo.
         </p>
       </section>
     </main>
